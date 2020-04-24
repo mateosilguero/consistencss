@@ -22,7 +22,7 @@ yarn add consistencss
 
 ## Using Hermes ? (Android only):
 
-Are you enabled [Hermes](https://reactnative.dev/docs/hermes) in your proyect ? so then you probably will see a red screen with the "Property 'Proxy' doesn't exist, js engine: hermes" message.
+Are you enabled [Hermes](https://reactnative.dev/docs/hermes) in your project ? so then you probably will see a red screen with the "Property 'Proxy' doesn't exist, js engine: hermes" message.
 
 In this case, you should update the hermes version to `v0.4.2-rc1` (since Proxy was not inside hermes before)
 
