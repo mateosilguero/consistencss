@@ -10,14 +10,16 @@
 
 // List of projects/orgs using your project for the users page.
 const users = [
-  // {
-  //   caption: 'User1',
-  //   // You will need to prepend the image path with your baseUrl
-  //   // if it is not '/', like: '/test-site/img/image.jpg'.
-  //   image: '/img/undraw_open_source.svg',
-  //   infoLink: 'https://www.facebook.com',
-  //   pinned: true,
-  // },
+  {
+    caption: 'Bitrice',
+    // You will need to prepend the image path with your baseUrl
+    // if it is not '/', like: '/test-site/img/image.jpg'.
+    image:
+      'https://lh3.googleusercontent.com/CI0lB2u_NoTwTqp2hpwUIOHUZ-E-QFvLBQThA4l6Rj0MVwmiNrFH2X0gL2tbHc-n7ICW=s360-rw',
+    infoLink:
+      'https://play.google.com/store/apps/details?id=com.bitrise&hl=es_AR',
+    pinned: true,
+  },
 ];
 
 const siteConfig = {
