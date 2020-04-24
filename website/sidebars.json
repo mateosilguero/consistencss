@@ -1,0 +1,18 @@
+{
+  "docs": {
+    "Getting started": ["getting-started"]
+  },
+  "api": {
+    "Consistencss": [
+      "background",
+      "borders",
+      "effects",
+      "flex",
+      "layout",
+      "sizing",
+      "spacing",
+      "typography"
+    ],
+    "Methods": ["apply", "extend", "exists", "components"]
+  }
+}

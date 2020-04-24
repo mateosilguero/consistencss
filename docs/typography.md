@@ -1,0 +1,84 @@
+---
+id: typography
+title: Typography
+---
+
+properties for texts:
+
+```js
+import { Text } from 'react-native'
+import C from 'consistencss'
+
+...
+return (
+    <Text style={C.textRed}>Hello</Text>
+    <Text style={C.uppercase}>World</Text>
+)
+```
+
+## text
+
+text[color: string]
+
+set the color of text
+
+`textBlue` -> { color: 'blue' }
+
+## font
+
+font[size: number]
+
+set the font size of text
+
+`font4` -> { fontSize: 16 }
+
+## align
+
+align[alignment: string]
+
+set the alignment of text
+
+`alignCenter` -> { textAlign: 'center' }
+
+## italic
+
+set text to italic
+
+`italic` -> { textTransform: 'italic' }
+
+## uppercase
+
+set text to uppercase
+
+`uppercase` -> { textTransform: ' uppercase' }
+
+## lowercase
+
+set text to lowercase
+
+`lowercase` -> { textTransform: 'lowercase' }
+
+## capitalize
+
+capitalize text
+
+`capitalize` -> { textTransform: 'capitalize' }
+
+## weight
+
+weight[weight: string]
+
+set the weight of text
+
+`weightBold` -> { fontWeight: 'bold' }
+`weight400` -> { fontWeight: '400' }
+
+## tint
+
+tint[color: string]
+
+set the tint color of text
+
+`tintYellow` -> { tintColor: 'yellow' }
+
+> see more colors at https://reactnative.dev/docs/colors
