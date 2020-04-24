@@ -1,5 +1,7 @@
 # consistencss
 
+![logo](./website/static/img/logo.svg 'Logo')
+
 An "atomic css" style toolkit for React Native, inspired by [tailwindcss](https://tailwindcss.com/docs/installation/)
 
 Full Documentation: https://consistencss.now.sh/
