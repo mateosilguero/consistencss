@@ -32,7 +32,7 @@ const siteConfig = {
   //   baseUrl: '/test-site/',
 
   // Used for publishing and more
-  projectName: 'test-site',
+  projectName: 'consistencss',
   organizationName: 'facebook',
   // For top-level user or org sites, the organization is still the same.
   // e.g., for the https://JoelMarcey.github.io site, it would be set like...
@@ -47,7 +47,7 @@ const siteConfig = {
       label: 'GitHub',
     },
     //{ blog: true, label: 'Blog' },
-    //{ search: true },
+    { search: true },
   ],
 
   // If you have users set above, you add it here:
@@ -112,11 +112,11 @@ const siteConfig = {
   // template. For example, if you need your repo's URL...
   repoUrl: 'https://github.com/mateosilguero/consistencss',
 
-  // algolia: {
-  //   apiKey: '',
-  //   indexName: '',
-  //   algoliaOptions: {}, // Optional, if provided by Algolia
-  // },
+  algolia: {
+    apiKey: 'cc789b89c83469554d617a2019279b16',
+    indexName: 'consistencss',
+    algoliaOptions: {}, // Optional, if provided by Algolia
+  },
 };
 
 module.exports = siteConfig;

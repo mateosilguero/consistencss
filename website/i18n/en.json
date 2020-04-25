@@ -44,6 +44,55 @@
       },
       "typography": {
         "title": "Typography"
+      },
+      "version-0.1.1/version-0.1.1-apply": {
+        "title": "Apply"
+      },
+      "version-0.1.1/version-0.1.1-background": {
+        "title": "Backgrounds"
+      },
+      "version-0.1.1/version-0.1.1-borders": {
+        "title": "Borders"
+      },
+      "version-0.1.1/version-0.1.1-components": {
+        "title": "Components"
+      },
+      "version-0.1.1/version-0.1.1-effects": {
+        "title": "Effects"
+      },
+      "version-0.1.1/version-0.1.1-exists": {
+        "title": "Exists"
+      },
+      "version-0.1.1/version-0.1.1-extend": {
+        "title": "Extend"
+      },
+      "version-0.1.1/version-0.1.1-flex": {
+        "title": "Flex"
+      },
+      "version-0.1.1/version-0.1.1-getting-started": {
+        "title": "Installation",
+        "sidebar_label": "Installation"
+      },
+      "version-0.1.1/version-0.1.1-layout": {
+        "title": "Layout"
+      },
+      "version-0.1.1/version-0.1.1-sizing": {
+        "title": "Sizing"
+      },
+      "version-0.1.1/version-0.1.1-spacing": {
+        "title": "Spacing"
+      },
+      "version-0.1.1/version-0.1.1-typography": {
+        "title": "Typography"
+      },
+      "version-0.2.0/version-0.2.0-sizing": {
+        "title": "Sizing"
+      },
+      "version-0.2.0/version-0.2.0-spacing": {
+        "title": "Spacing"
+      },
+      "version-0.2.0/version-0.2.0-typography": {
+        "title": "Typography"
       }
     },
     "links": {

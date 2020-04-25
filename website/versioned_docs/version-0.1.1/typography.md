@@ -1,6 +1,7 @@
 ---
-id: typography
+id: version-0.1.1-typography
 title: Typography
+original_id: typography
 ---
 
 properties for texts:
@@ -39,16 +40,6 @@ align[alignment: string]
 set the alignment of text
 
 `alignCenter` -> { textAlign: 'center' }
-
-## line
-
-line[height: number]
-
-set the line height of text
-
-`line2` -> { lineHeight: 8 }
-
-`line1` -> { lineHeight: 4 }
 
 ## italic
 

@@ -1,15 +1,12 @@
 import { StyleSheet } from 'react-native';
-import {
-  AnyObject,
-  NumberObject,
-  StringObject,
-  DynamicObject,
-  StylesObject,
-} from './types';
+import { AnyObject, StringObject, DynamicObject, StylesObject } from './types';
 
-const sizing: NumberObject = {
+const sizing: AnyObject = {
   base: 16,
   hairline: StyleSheet.hairlineWidth,
+  quarter: '25%',
+  half: '50%',
+  full: '100%',
 };
 
 export const components: DynamicObject<StylesObject> = {

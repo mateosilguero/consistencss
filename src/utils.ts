@@ -3,7 +3,7 @@ export const atomGenerator = (property: string, value: any) => ({
 });
 
 export const camelCaseSplit = (string: string): [string, string] => {
-  const [key, ...value] = string.split(/(?=[A-Z0-9])/);
+  const [key, ...value] = string.replace('_', '-').split(/(?=[-A-Z0-9])/);
   const v = value.join('').toLowerCase();
   return [key.toLowerCase(), v];
 };

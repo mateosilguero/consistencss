@@ -15,6 +15,8 @@ test('atomGenerator should return a new atom', () => {
 test('camelCaseSplit should a [key, value] pair from string', () => {
   expect(camelCaseSplit('bgRed')).toEqual(['bg', 'red']);
   expect(camelCaseSplit('w1')).toEqual(['w', '1']);
+  expect(camelCaseSplit('w_1')).toEqual(['w', '-1']);
+  expect(camelCaseSplit('mt_4')).toEqual(['mt', '-4']);
   expect(camelCaseSplit('x11234')).toEqual(['x', '11234']);
   expect(camelCaseSplit('testYellowColor')).toEqual(['test', 'yellowcolor']);
   expect(camelCaseSplit('LoremIpsum')).toEqual(['lorem', 'ipsum']);

@@ -10,17 +10,11 @@ import {
 import { components } from './constants';
 import { apply } from './';
 
-interface ComponentProps {
+interface Props {
   children?: ReactNode;
 }
 
-interface TextInterface extends TextProps, ComponentProps {}
-interface TouchableOpacityInterface
-  extends TouchableOpacityProps,
-    ComponentProps {}
-interface ViewInterface extends ViewProps, ComponentProps {}
-
-export const Text = ({ children, style = {}, ...rest }: TextInterface) => (
+export const Text = ({ children, style = {}, ...rest }: Props & TextProps) => (
   <RNText style={apply(components.Text, style)} {...rest}>
     {children}
   </RNText>
@@ -30,7 +24,7 @@ export const TouchableOpacity = ({
   children,
   style = {},
   ...rest
-}: TouchableOpacityInterface) => (
+}: Props & TouchableOpacityProps) => (
   <RNTouchableOpacity
     style={apply(components.TouchableOpacity, style)}
     {...rest}
@@ -39,7 +33,7 @@ export const TouchableOpacity = ({
   </RNTouchableOpacity>
 );
 
-export const View = ({ children, style = {}, ...rest }: ViewInterface) => (
+export const View = ({ children, style = {}, ...rest }: Props & ViewProps) => (
   <RNView style={apply(components.View, style)} {...rest}>
     {children}
   </RNView>

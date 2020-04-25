@@ -1,6 +1,7 @@
 ---
-id: spacing
+id: version-0.2.0-spacing
 title: Spacing
+original_id: spacing
 ---
 
 control padding and margin from element:

@@ -7,6 +7,7 @@ import {
 } from './getters';
 import { atomGenerator, capitalize } from './utils';
 import constants from './constants';
+import { Dimensions } from 'react-native';
 
 const compose = (transformer: Function) => (property: string) => (
   value: string,
@@ -42,6 +43,7 @@ const dictionary: AnyObject = {
   text: useColor('color'),
   font: useSize('fontSize'),
   align: useAlignment('textAlign'),
+  line: useSize('lineHeight'),
   italic: useKey('fontStyle'),
   uppercase: useKey('textTransform'),
   lowercase: useKey('textTransform'),
@@ -57,8 +59,10 @@ const dictionary: AnyObject = {
   ...getSidesFor('radius', position => useSize(`border${position}Radius`)),
   // sizing
   h: useSize('height'),
+  hscreen: compose(() => Dimensions.get('window').height)('height'),
   maxh: useSize('maxHeight'),
   w: useSize('width'),
+  wscreen: compose(() => Dimensions.get('window').width)('width'),
   maxw: useSize('maxWidth'),
   // spacing
   ...getSidesFor('p', position => useSize(`padding${position}`), true),

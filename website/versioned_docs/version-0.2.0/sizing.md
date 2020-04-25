@@ -1,6 +1,7 @@
 ---
-id: sizing
+id: version-0.2.0-sizing
 title: Sizing
+original_id: sizing
 ---
 
 ```js

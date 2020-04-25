@@ -1,4 +1,5 @@
 import dictionary from '../dictionary';
+import { Dimensions } from 'react-native';
 
 test('atomGenerator should return a new atom', () => {
   expect(dictionary['bg']).toBeInstanceOf(Function);
@@ -19,5 +20,14 @@ test('atomGenerator should return a new atom', () => {
   });
   expect(dictionary['border']('hairline')).toEqual({
     borderWidth: 0.5,
+  });
+  expect(dictionary['wscreen']('')).toEqual({
+    width: Dimensions.get('window').width,
+  });
+  expect(dictionary['hscreen']('')).toEqual({
+    height: Dimensions.get('window').height,
+  });
+  expect(dictionary['h']('full')).toEqual({
+    height: '100%',
   });
 });
