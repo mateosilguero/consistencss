@@ -12,8 +12,6 @@ import { NavigationStack } from '../types';
 
 const row = apply(C.itemsCenter, C.justifyBetween, C.row);
 
-console.log(C.ml);
-
 const Another: FC<{ navigation: NavigationStack }> = ({ navigation }) => {
   return (
     <>

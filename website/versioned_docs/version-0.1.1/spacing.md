@@ -1,6 +1,7 @@
 ---
-id: spacing
+id: version-0.1.1-spacing
 title: Spacing
+original_id: spacing
 ---
 
 control padding and margin from element:
@@ -24,8 +25,6 @@ p[direction: sitring][size: number]
 set padding based on number:
 
 `p4` -> { padding: 16 }
-
-`p2` -> { padding: 8 }
 
 specify side:
 
@@ -56,12 +55,6 @@ specify side:
 `mx4` -> { marginHorizontal: 16 }
 
 `my2` -> { marginVertical: 8 }
-
-use negative values:
-
-`mt_4` -> { marginTop: -16 }
-
-`mb_2` -> { marginBottom: -8 }
 
 ## Sides:
 

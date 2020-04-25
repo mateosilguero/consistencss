@@ -1,6 +1,7 @@
 ---
-id: apply
+id: version-0.1.1-apply
 title: Apply
+original_id: apply
 ---
 
 `apply(styles: Array<styles | string>) => styles[]`

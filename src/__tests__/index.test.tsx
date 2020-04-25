@@ -30,14 +30,23 @@ test('C proxy get', () => {
   expect(C.alignCenter).toEqual({
     textAlign: 'center',
   });
+  expect(C.line4).toEqual({
+    lineHeight: 16,
+  });
   expect(C.m4).toEqual({
     margin: 16,
   });
   expect(C.mt2).toEqual({
     marginTop: 8,
   });
+  expect(C.mt_2).toEqual({
+    marginTop: -8,
+  });
   expect(C.mx9).toEqual({
     marginHorizontal: 36,
+  });
+  expect(C.mx_9).toEqual({
+    marginHorizontal: -36,
   });
   expect(C.py4).toEqual({
     paddingVertical: 16,
