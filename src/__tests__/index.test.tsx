@@ -54,6 +54,12 @@ test('C proxy get', () => {
   expect(C.elevation1).toEqual({
     elevation: 1,
   });
+  expect(C.flex).toEqual({
+    flex: 1,
+  });
+  expect(C.overflowHidden).toEqual({
+    overflow: 'hidden',
+  });
   C['a'] = { backgroundColor: 'red' };
   expect(C.a).toEqual({});
   expect(C).toEqual({});

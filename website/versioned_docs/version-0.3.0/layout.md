@@ -1,6 +1,7 @@
 ---
-id: layout
+id: version-0.3.0-layout
 title: Layout
+original_id: layout
 ---
 
 ```js

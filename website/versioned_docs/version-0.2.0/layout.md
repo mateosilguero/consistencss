@@ -1,5 +1,6 @@
 ---
-id: layout
+id: version-0.2.0-layout
+original_id: layout
 title: Layout
 ---
 
@@ -50,13 +51,3 @@ return (
 ## rtl
 
 `rtl` -> { direction: 'ltrtlr' }
-
-## overflow
-
-set overflow behavior
-
-overflow[behavior: string]
-
-`overflowScroll` -> { overflow: 'scroll' }
-
-`overflowHidden` -> { overflow: 'hidden' }

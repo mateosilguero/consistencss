@@ -1,6 +1,7 @@
 ---
-id: flex
+id: version-0.3.0-flex
 title: Flex
+original_id: flex
 ---
 
 ```js

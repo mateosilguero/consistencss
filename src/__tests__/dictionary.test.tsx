@@ -30,4 +30,13 @@ test('atomGenerator should return a new atom', () => {
   expect(dictionary['h']('full')).toEqual({
     height: '100%',
   });
+  expect(dictionary['flex']('')).toEqual({
+    flex: 1,
+  });
+  expect(dictionary['flex']('2')).toEqual({
+    flex: 2,
+  });
+  expect(dictionary['overflow']('scroll')).toEqual({
+    overflow: 'scroll',
+  });
 });

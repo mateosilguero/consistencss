@@ -20,7 +20,7 @@ const Another: FC<{ navigation: NavigationStack }> = ({ navigation }) => {
         <Text style={apply(C.textSecondary, C.weightBold)}>right</Text>
       </View>
       <TouchableOpacity
-        style={apply(C.m4, C.bgPrimary, C.radius4)}
+        style={apply(C.flex, C.m4, C.bgPrimary, C.radius4)}
         onPress={() => navigation.goBack()}
       >
         <Text style={apply(C.textWhite)}>Go back</Text>

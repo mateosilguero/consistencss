@@ -9,10 +9,10 @@ import { atomGenerator, capitalize } from './utils';
 import constants from './constants';
 import { Dimensions } from 'react-native';
 
-const compose = (transformer: Function) => (property: string) => (
-  value: string,
-  key?: string
-) => atomGenerator(property, transformer(value, key));
+const compose = (transformer: Function = (v: string) => v) => (
+  property: string
+) => (value: string, key?: string) =>
+  atomGenerator(property, transformer(value, key));
 
 const useColor = compose(getColorForKey);
 const useSize = compose(getSizeForKey);
@@ -43,6 +43,7 @@ const dictionary: AnyObject = {
   text: useColor('color'),
   font: useSize('fontSize'),
   align: useAlignment('textAlign'),
+  alignvertical: useAlignment('textAlignVertical'),
   line: useSize('lineHeight'),
   italic: useKey('fontStyle'),
   uppercase: useKey('textTransform'),
@@ -77,7 +78,9 @@ const dictionary: AnyObject = {
   rtl: useKey('direction'),
   /* layout: top, bottom, left, right, start, end */
   ...getSidesFor('', position => useSize(position.toLowerCase())),
+  overflow: compose()('overflow'),
   // flexbox
+  flex: compose((value: string) => Number(value || 1))('flex'),
   row: useKey('flexDirection'),
   wrap: useKey('flexWrap'),
   justify: useAlignment('justifyContent'),

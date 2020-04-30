@@ -85,6 +85,12 @@
       "version-0.1.1/version-0.1.1-typography": {
         "title": "Typography"
       },
+      "version-0.2.0/version-0.2.0-borders": {
+        "title": "Borders"
+      },
+      "version-0.2.0/version-0.2.0-layout": {
+        "title": "Layout"
+      },
       "version-0.2.0/version-0.2.0-sizing": {
         "title": "Sizing"
       },
@@ -92,6 +98,15 @@
         "title": "Spacing"
       },
       "version-0.2.0/version-0.2.0-typography": {
+        "title": "Typography"
+      },
+      "version-0.3.0/version-0.3.0-flex": {
+        "title": "Flex"
+      },
+      "version-0.3.0/version-0.3.0-layout": {
+        "title": "Layout"
+      },
+      "version-0.3.0/version-0.3.0-typography": {
         "title": "Typography"
       }
     },

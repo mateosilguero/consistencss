@@ -20,6 +20,14 @@ const users = [
       'https://play.google.com/store/apps/details?id=com.bitrise&hl=es_AR',
     pinned: true,
   },
+  {
+    caption: 'JSand',
+    image:
+      'https://lh3.googleusercontent.com/JOloldr8-Uf4enRFzcvnZeKzeZR4TN3jquhNezvRS2dRvzRhOCOBTm6m3d8m_WNVLdU=s360-rw',
+    infoLink:
+      'https://play.google.com/store/apps/details?id=com.JSand&hl=en_US',
+    pinned: true,
+  },
 ];
 
 const siteConfig = {
