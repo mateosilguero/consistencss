@@ -1,6 +1,6 @@
 import { StyleSheet, StyleProp } from 'react-native';
 import constants from './constants';
-import { Text, TouchableOpacity, View } from './components';
+import { Text, TextInput, TouchableOpacity, View } from './components';
 import dictionary from './dictionary';
 import { DynamicObject, Styles, StylesObject } from './types';
 import { camelCaseSplit, isEmpty, warnOnInvalidKey } from './utils';
@@ -56,7 +56,7 @@ const handler = {
   },
 };
 
-export { apply, exists, extend, Text, TouchableOpacity, View };
+export { apply, exists, extend, Text, TextInput, TouchableOpacity, View };
 
 const C: StylesObject = StyleSheet.create(new Proxy({}, handler));
 

@@ -1,6 +1,7 @@
 ---
-id: components
+id: version-0.4.0-components
 title: Components
+original_id: components
 ---
 
 Consistencss gives an implementation of RN components, with default styles

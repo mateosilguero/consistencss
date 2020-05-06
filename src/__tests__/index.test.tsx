@@ -3,6 +3,7 @@ import C, {
   exists,
   extend,
   Text,
+  TextInput,
   TouchableOpacity,
   View,
 } from '../index';
@@ -128,11 +129,13 @@ test('extend should change the default style from components', () => {
   expect(View({}).props.style).toEqual([{}, {}]);
   expect(Text({}).props.style).toEqual([{}, {}]);
   expect(TouchableOpacity({}).props.style).toEqual([{}, {}]);
+  expect(TextInput({}).props.style).toEqual([{}, {}]);
   extend({
     components: {
       View: apply(C.m4),
       Text: apply(C.textRed),
       TouchableOpacity: apply(C.p4),
+      TextInput: apply(C.px2),
     },
   });
   expect(View({}).props.style).toEqual([{ margin: 8 }, {}]);
@@ -147,4 +150,5 @@ test('extend should change the default style from components', () => {
   ]);
   expect(Text({}).props.style).toEqual([{ color: 'red' }, {}]);
   expect(TouchableOpacity({}).props.style).toEqual([{ padding: 8 }, {}]);
+  expect(TextInput({}).props.style).toEqual([{ paddingHorizontal: 4 }, {}]);
 });

@@ -7,7 +7,13 @@
  */
 
 import React, { FC } from 'react';
-import C, { apply, Text, TouchableOpacity, View } from 'consistencss';
+import C, {
+  apply,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View,
+} from 'consistencss';
 import { NavigationStack } from '../types';
 
 const row = apply(C.itemsCenter, C.justifyBetween, C.row);
@@ -19,6 +25,7 @@ const Another: FC<{ navigation: NavigationStack }> = ({ navigation }) => {
         <Text style={apply(C.textBlue, C.font4)}>left</Text>
         <Text style={apply(C.textSecondary, C.weightBold)}>right</Text>
       </View>
+      <TextInput placeholder="search..." />
       <TouchableOpacity
         style={apply(C.flex, C.m4, C.bgPrimary, C.radius4)}
         onPress={() => navigation.goBack()}

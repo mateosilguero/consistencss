@@ -12,6 +12,7 @@ extend({
   },
   components: {
     Text: apply(C.textBlue, C.m8, C.uppercase, { fontSize: 24 }),
+    TextInput: apply(C.borderRed, C.borderHairline, C.font4, C.px3),
   },
   sizing: {},
 });

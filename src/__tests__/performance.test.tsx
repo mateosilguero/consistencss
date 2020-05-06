@@ -16,15 +16,10 @@ test("perfomance matters, consistencss's apply should be similar than StyleSheet
           color: 'skyblue',
           paddingVertical: 16,
         },
-        test2: {
-          flexDirection: 'row',
-          justifyContent: 'space-between',
-        },
       });
     })
     .add('apply', function() {
       apply(C.bgRed, C.m4, C.alignCenter, C.textSkyblue, C.py);
-      apply(C.row, C.justifyBetween);
     })
     // add listeners
     .on('cycle', function(event: any) {

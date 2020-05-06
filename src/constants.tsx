@@ -11,6 +11,7 @@ const sizing: AnyObject = {
 
 export const components: DynamicObject<StylesObject> = {
   Text: {},
+  TextInput: {},
   TouchableOpacity: {},
   View: {},
 };

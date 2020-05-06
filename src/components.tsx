@@ -2,6 +2,8 @@ import React, { ReactNode } from 'react';
 import {
   Text as RNText,
   TextProps,
+  TextInput as RNTextInput,
+  TextInputProps,
   TouchableOpacity as RNTouchableOpacity,
   TouchableOpacityProps,
   View as RNView,
@@ -18,6 +20,10 @@ export const Text = ({ children, style = {}, ...rest }: Props & TextProps) => (
   <RNText style={apply(components.Text, style)} {...rest}>
     {children}
   </RNText>
+);
+
+export const TextInput = ({ style = {}, ...rest }: TextInputProps) => (
+  <RNTextInput style={apply(components.TextInput, style)} {...rest} />
 );
 
 export const TouchableOpacity = ({
