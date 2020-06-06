@@ -1,5 +1,5 @@
-import { StyleSheet } from 'react-native';
-import { AnyObject, StringObject, DynamicObject, StylesObject } from './types';
+import { StyleProp, StyleSheet } from 'react-native';
+import { AnyObject, StringObject, DynamicObject, Styles } from './types';
 
 const sizing: AnyObject = {
   base: 16,
@@ -9,7 +9,7 @@ const sizing: AnyObject = {
   full: '100%',
 };
 
-export const components: DynamicObject<StylesObject> = {
+export const components: DynamicObject<StyleProp<Styles | {}>> = {
   Text: {},
   TextInput: {},
   TouchableOpacity: {},
@@ -51,4 +51,4 @@ export default {
   components,
   fontWeights,
   sizing,
-} as DynamicObject<AnyObject>;
+};

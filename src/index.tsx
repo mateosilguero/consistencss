@@ -2,7 +2,7 @@ import { StyleSheet, StyleProp } from 'react-native';
 import constants from './constants';
 import { Text, TextInput, TouchableOpacity, View } from './components';
 import dictionary from './dictionary';
-import { DynamicObject, Styles, StylesObject } from './types';
+import { Styles, StylesObject } from './types';
 import { camelCaseSplit, isEmpty, warnOnInvalidKey } from './utils';
 
 const apply = (
@@ -10,13 +10,15 @@ const apply = (
 ): StyleProp<Styles | {}> =>
   styles.flatMap(s => (typeof s === 'string' ? C[s] : s));
 
-function extend(custom: DynamicObject<DynamicObject<any>>) {
-  Object.keys(custom).forEach(type => {
-    Object.keys(custom[type]).forEach(method => {
-      if (!constants.hasOwnProperty(type)) {
-        constants[type] = {};
+type ConstantsKey = keyof typeof constants;
+
+function extend(custom: Partial<typeof constants>) {
+  Object.keys(custom).forEach((type: string) => {
+    const t = type as ConstantsKey;
+    Object.keys(custom[t] || {}).forEach(method => {
+      if (constants.hasOwnProperty(t)) {
+        constants[t][method] = custom[t]?.[method];
       }
-      constants[type][method] = custom[type][method];
     });
   });
 }
@@ -56,7 +58,16 @@ const handler = {
   },
 };
 
-export { apply, exists, extend, Text, TextInput, TouchableOpacity, View };
+export {
+  apply,
+  exists,
+  extend,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View,
+  constants as theme,
+};
 
 const C: StylesObject = StyleSheet.create(new Proxy({}, handler));
 

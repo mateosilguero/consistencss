@@ -42,6 +42,9 @@
       "spacing": {
         "title": "Spacing"
       },
+      "theme": {
+        "title": "Theme"
+      },
       "typography": {
         "title": "Typography"
       },
@@ -111,6 +114,12 @@
       },
       "version-0.4.0/version-0.4.0-components": {
         "title": "Components"
+      },
+      "version-0.5.0/version-0.5.0-sizing": {
+        "title": "Sizing"
+      },
+      "version-0.5.0/version-0.5.0-theme": {
+        "title": "Theme"
       }
     },
     "links": {

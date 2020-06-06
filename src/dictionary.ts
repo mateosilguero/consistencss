@@ -14,11 +14,11 @@ const compose = (transformer: Function = (v: string) => v) => (
 ) => (value: string, key?: string) =>
   atomGenerator(property, transformer(value, key));
 
-const useColor = compose(getColorForKey);
-const useSize = compose(getSizeForKey);
-const useFontWeight = compose(getFontWeigth);
-const useAlignment = compose(getTextAlign);
-const useKey = compose((_: string, k: string) => k);
+const getColorFor = compose(getColorForKey);
+const getSizeFor = compose(getSizeForKey);
+const getFontWeightFor = compose(getFontWeigth);
+const geAlignmentFor = compose(getTextAlign);
+const keyAsValue = compose((_: string, k: string) => k);
 
 const sides = ['', 'top', 'bottom', 'left', 'right', 'start', 'end'];
 const getSidesFor = (
@@ -38,55 +38,57 @@ const getSidesFor = (
 
 const dictionary: AnyObject = {
   // background color
-  bg: useColor('backgroundColor'),
+  bg: getColorFor('backgroundColor'),
   //typography
-  text: useColor('color'),
-  font: useSize('fontSize'),
-  align: useAlignment('textAlign'),
-  alignvertical: useAlignment('textAlignVertical'),
-  line: useSize('lineHeight'),
-  italic: useKey('fontStyle'),
-  uppercase: useKey('textTransform'),
-  lowercase: useKey('textTransform'),
-  capitalize: useKey('textTransform'),
-  weight: useFontWeight('fontWeight'),
-  tint: useColor('tintColor'),
+  text: getColorFor('color'),
+  font: getSizeFor('fontSize'),
+  align: geAlignmentFor('textAlign'),
+  alignvertical: geAlignmentFor('textAlignVertical'),
+  line: getSizeFor('lineHeight'),
+  italic: keyAsValue('fontStyle'),
+  uppercase: keyAsValue('textTransform'),
+  lowercase: keyAsValue('textTransform'),
+  capitalize: keyAsValue('textTransform'),
+  weight: getFontWeightFor('fontWeight'),
+  tint: getColorFor('tintColor'),
   // borders
   ...getSidesFor('border', position => (value: string) => {
     return (isNaN(Number(value)) && !constants.sizing[value]
-      ? useColor(`border${position}Color`)
-      : useSize(`border${position}Width`))(value);
+      ? getColorFor(`border${position}Color`)
+      : getSizeFor(`border${position}Width`))(value);
   }),
-  ...getSidesFor('radius', position => useSize(`border${position}Radius`)),
+  ...getSidesFor('radius', position => getSizeFor(`border${position}Radius`)),
   // sizing
-  h: useSize('height'),
+  h: getSizeFor('height'),
   hscreen: compose(() => Dimensions.get('window').height)('height'),
-  maxh: useSize('maxHeight'),
-  w: useSize('width'),
+  maxh: getSizeFor('maxHeight'),
+  minh: getSizeFor('minHeight'),
+  w: getSizeFor('width'),
   wscreen: compose(() => Dimensions.get('window').width)('width'),
-  maxw: useSize('maxWidth'),
+  maxw: getSizeFor('maxWidth'),
+  minw: getSizeFor('minWidth'),
   // spacing
-  ...getSidesFor('p', position => useSize(`padding${position}`), true),
-  py: useSize('paddingVertical'),
-  px: useSize('paddingHorizontal'),
-  ...getSidesFor('m', position => useSize(`margin${position}`), true),
-  my: useSize('marginVertical'),
-  mx: useSize('marginHorizontal'),
+  ...getSidesFor('p', position => getSizeFor(`padding${position}`), true),
+  py: getSizeFor('paddingVertical'),
+  px: getSizeFor('paddingHorizontal'),
+  ...getSidesFor('m', position => getSizeFor(`margin${position}`), true),
+  my: getSizeFor('marginVertical'),
+  mx: getSizeFor('marginHorizontal'),
   //layout
-  absolute: useKey('position'),
-  ltr: useKey('direction'),
-  rtl: useKey('direction'),
+  absolute: keyAsValue('position'),
+  ltr: keyAsValue('direction'),
+  rtl: keyAsValue('direction'),
   /* layout: top, bottom, left, right, start, end */
-  ...getSidesFor('', position => useSize(position.toLowerCase())),
+  ...getSidesFor('', position => getSizeFor(position.toLowerCase())),
   overflow: compose()('overflow'),
   // flexbox
   flex: compose((value: string) => Number(value || 1))('flex'),
-  row: useKey('flexDirection'),
-  wrap: useKey('flexWrap'),
-  justify: useAlignment('justifyContent'),
-  items: useAlignment('alignItems'),
-  self: useAlignment('alignSelf'),
-  content: useAlignment('alignContent'),
+  row: keyAsValue('flexDirection'),
+  wrap: keyAsValue('flexWrap'),
+  justify: geAlignmentFor('justifyContent'),
+  items: geAlignmentFor('alignItems'),
+  self: geAlignmentFor('alignSelf'),
+  content: geAlignmentFor('alignContent'),
   // effects
   elevation: compose((value: string) => Number(value))('elevation'),
   opacity: compose((value: string) => Number(value) / 100)('opacity'),

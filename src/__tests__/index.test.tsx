@@ -113,9 +113,6 @@ test('extend should change the default values from constants', () => {
     sizing: {
       base: 8,
     },
-    custom: {
-      will: 'ignore this',
-    },
   });
   expect(C.bgPrimary).toEqual({
     backgroundColor: 'blue',
@@ -137,6 +134,7 @@ test('extend should change the default style from components', () => {
       TouchableOpacity: apply(C.p4),
       TextInput: apply(C.px2),
     },
+    colors: undefined,
   });
   expect(View({}).props.style).toEqual([{ margin: 8 }, {}]);
   expect(View({ style: apply(C.p4, 'row') }).props.style).toEqual([

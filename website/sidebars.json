@@ -13,6 +13,6 @@
       "spacing",
       "typography"
     ],
-    "Methods": ["apply", "extend", "exists", "components"]
+    "Methods": ["apply", "extend", "exists", "components", "theme"]
   }
 }

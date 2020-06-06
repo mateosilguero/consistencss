@@ -7,12 +7,8 @@
  */
 
 import React, { FC } from 'react';
-import {
-  ScrollView,
-  TouchableOpacity,
-  useWindowDimensions,
-} from 'react-native';
-import C, { apply, Text, View } from 'consistencss';
+import { ScrollView, useWindowDimensions } from 'react-native';
+import C, { apply, Text, TouchableOpacity, View } from 'consistencss';
 import { NavigationStack } from '../types';
 
 const Home: FC<{
@@ -34,15 +30,11 @@ const Home: FC<{
       <Text style={apply(C.textSecondary, C.weightBold, C.mt_1)}>
         secondary
       </Text>
-      <TouchableOpacity
-        style={apply(C.borderbottomRed, C.borderbottomHairline)}
-      >
-        <Text style={apply(C.font5, C.textPrimary, C.weightBlack)}>
-          primary
-        </Text>
+      <TouchableOpacity>
+        <Text style={C.weightBlack}>primary</Text>
       </TouchableOpacity>
       <TouchableOpacity
-        style={apply(C.m4, C.bgPrimary, C.radius4)}
+        style={apply(C.m4, C.radius4)}
         onPress={() => navigation.navigate('Another')}
       >
         <Text style={apply(C.textWhite)}>Navigate</Text>
