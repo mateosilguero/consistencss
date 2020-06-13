@@ -5,8 +5,10 @@ test('atomGenerator should return a new atom', () => {
   expect(dictionary.bg).toBeInstanceOf(Function);
   expect(dictionary.m).toBeInstanceOf(Function);
   expect(dictionary.mx).toBeInstanceOf(Function);
+  // @ts-ignore
   expect(dictionary.mt).toBeInstanceOf(Function);
   expect(dictionary.uppercase).toBeInstanceOf(Function);
+  // @ts-ignore
   expect(dictionary.notExists).toBeUndefined();
   expect(dictionary.bg('red')).toEqual({
     backgroundColor: 'red',

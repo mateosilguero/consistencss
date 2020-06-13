@@ -21,6 +21,12 @@ test('C proxy get', () => {
   expect(C.weight).toEqual({
     fontWeight: 'normal',
   });
+  expect(C.weightBold).toEqual({
+    fontWeight: 'bold',
+  });
+  expect(C.weight700).toEqual({
+    fontWeight: undefined,
+  });
   expect(C.alignNone).toEqual({
     textAlign: undefined,
   });
@@ -61,8 +67,15 @@ test('C proxy get', () => {
   expect(C.overflowHidden).toEqual({
     overflow: 'hidden',
   });
-  C['a'] = { backgroundColor: 'red' };
+  C.a = { backgroundColor: 'red' };
+  expect(() =>
+    Object.defineProperty(C, 'b', {
+      value: 42,
+      writable: false,
+    })
+  ).toThrow(TypeError);
   expect(C.a).toEqual({});
+  expect(C.b).toEqual({});
   expect(C).toEqual({});
 });
 
@@ -107,6 +120,11 @@ test('extend should change the default values from constants', () => {
     margin: 16,
   });
   extend({
+    // necesary for test non-ts code;
+    // @ts-ignore
+    notExists: {
+      key: 'value',
+    },
     colors: {
       primary: 'blue',
     },

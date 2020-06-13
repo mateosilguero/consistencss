@@ -20,12 +20,12 @@ const Home: FC<{
       <View style={apply(C.bgRed, C.h16, C.wscreen)}>
         <Text style={apply(C.textYellow, C.font3)}>yellow</Text>
       </View>
-      <View style={apply(C.bgMagenta, C.h4, C.wHalf)}></View>
-      <View style={apply(C.bgYellow, C.h3)}></View>
-      <View style={apply(C.bgBlue, C.h)}></View>
-      <View style={apply(C.bgRed, C.h4)}></View>
-      <View style={apply(C.bgBlue, C.h2)}></View>
-      <View style={apply({ backgroundColor: 'green' }, C.h3)}></View>
+      <View style={apply(C.bgMagenta, C.h4, C.wHalf)} />
+      <View style={apply(C.bgYellow, C.h3)} />
+      <View style={apply(C.bgBlue, C.h)} />
+      <View style={apply(C.bgRed, C.h4)} />
+      <View style={apply(C.bgBlue, C.h2)} />
+      <View style={apply({ backgroundColor: 'green' }, C.h3)} />
       <Text style={apply(C.textBlue, C.font4)}>blue</Text>
       <Text style={apply(C.textSecondary, C.weightBold, C.mt_1)}>
         secondary

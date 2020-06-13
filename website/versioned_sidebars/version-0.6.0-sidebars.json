@@ -1,0 +1,27 @@
+{
+  "version-0.6.0-docs": {
+    "Getting started": [
+      "version-0.6.0-getting-started"
+    ]
+  },
+  "version-0.6.0-api": {
+    "Consistencss": [
+      "version-0.6.0-background",
+      "version-0.6.0-borders",
+      "version-0.6.0-effects",
+      "version-0.6.0-flex",
+      "version-0.6.0-layout",
+      "version-0.6.0-sizing",
+      "version-0.6.0-spacing",
+      "version-0.6.0-typography"
+    ],
+    "Methods": [
+      "version-0.6.0-apply",
+      "version-0.6.0-extend",
+      "version-0.6.0-exists",
+      "version-0.6.0-getsizefor",
+      "version-0.6.0-components",
+      "version-0.6.0-theme"
+    ]
+  }
+}

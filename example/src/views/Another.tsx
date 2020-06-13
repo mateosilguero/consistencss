@@ -16,6 +16,10 @@ import C, {
 } from 'consistencss';
 import { NavigationStack } from '../types';
 
+C.elevation;
+
+C.px123;
+
 const row = apply(C.itemsCenter, C.justifyBetween, C.row);
 
 const Another: FC<{ navigation: NavigationStack }> = ({ navigation }) => {
@@ -30,7 +34,7 @@ const Another: FC<{ navigation: NavigationStack }> = ({ navigation }) => {
         style={apply(C.m4, C.radius4)}
         onPress={() => navigation.goBack()}
       >
-        <Text style={apply(C.textWhite)}>Go back</Text>
+        <Text style={C.textWhite}>Go back</Text>
       </TouchableOpacity>
       <TouchableOpacity style={apply(C.mx8, C.p0, C.radius100)}>
         <Text style={apply(C.textWhite, C.alignCenter)}>no effect</Text>

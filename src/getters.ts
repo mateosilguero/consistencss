@@ -16,6 +16,9 @@ export const getTextAlign = (name: string) => {
   return constants.alignment[name];
 };
 
+export const getSizeFor = (size: number) =>
+  (Number(size) / 4) * constants.sizing.base;
+
 export const getSizeForKey = (size: string) => {
   const nSize = Number(size);
   if (isNaN(nSize) && !constants.sizing[size]) {
@@ -25,7 +28,7 @@ export const getSizeForKey = (size: string) => {
       )}, or extend consistencss using the extend method.`
     );
   }
-  return constants.sizing[size] || (nSize / 4) * constants.sizing.base;
+  return constants.sizing[size] || getSizeFor(nSize);
 };
 
 export const getFontWeigth = (weight: string) => {

@@ -1,9 +1,10 @@
-import { StyleSheet, StyleProp } from 'react-native';
+import { StyleProp } from 'react-native';
 import constants from './constants';
 import { Text, TextInput, TouchableOpacity, View } from './components';
-import dictionary from './dictionary';
+import dictionary, { DictionaryKeys } from './dictionary';
 import { Styles, StylesObject } from './types';
 import { camelCaseSplit, isEmpty, warnOnInvalidKey } from './utils';
+import { getSizeFor } from './getters';
 
 const apply = (
   ...styles: Array<StyleProp<Styles> | string>
@@ -28,33 +29,35 @@ function exists(key: string): boolean {
 }
 
 const isAValidKey = (key: string): boolean =>
-  typeof key === 'string' &&
-  ![
-    'asymmetric',
-    'node',
-    'prototype',
-    'Symbol(Symbol.toStringTag)',
-    'toJSON',
-    '__proto__',
-    '$$typeof',
-  ].includes(key);
+  typeof key === 'string' && !['$$typeof', 'prototype', 'toJSON'].includes(key);
 
 const handler = {
-  get: function(target: StylesObject, name: string): Styles {
+  get: function(target: StylesObject, name: string): StylesObject {
     if (!isAValidKey(name)) return target;
-    const [key, value] = camelCaseSplit(name);
+    const [key, value] = camelCaseSplit(name) as [DictionaryKeys, string];
     if (!dictionary.hasOwnProperty(key)) {
       warnOnInvalidKey(`The key ${key} doesnt exists`);
       return target;
     }
     return dictionary[key]?.(value, key);
   },
-  has: function(target: StylesObject, name: string): boolean {
-    return dictionary[name] || !isEmpty(handler.get(target, name));
+  has: function(target: StylesObject, name: DictionaryKeys): boolean {
+    return (
+      dictionary[name] !== undefined || !isEmpty(handler.get(target, name))
+    );
   },
   set: function(): boolean {
     console.warn('set is not allowed. Use the extend method instead.');
     return false;
+  },
+  defineProperty: function(): boolean {
+    console.warn(
+      'defineProperty is not allowed. Use the extend method instead.'
+    );
+    return false;
+  },
+  ownKeys: function() {
+    return Reflect.ownKeys(dictionary);
   },
 };
 
@@ -62,13 +65,20 @@ export {
   apply,
   exists,
   extend,
+  getSizeFor,
+  constants as theme,
   Text,
   TextInput,
   TouchableOpacity,
   View,
-  constants as theme,
 };
 
-const C: StylesObject = StyleSheet.create(new Proxy({}, handler));
+type Consistencss = {
+  [key in DictionaryKeys]: {};
+} & {
+  [k: string]: {};
+};
+
+const C = new Proxy({}, handler) as Consistencss;
 
 export default C;

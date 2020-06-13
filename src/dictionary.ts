@@ -1,4 +1,3 @@
-import { AnyObject } from './types';
 import {
   getColorForKey,
   getFontWeigth,
@@ -20,12 +19,20 @@ const getFontWeightFor = compose(getFontWeigth);
 const geAlignmentFor = compose(getTextAlign);
 const keyAsValue = compose((_: string, k: string) => k);
 
+interface keysWithSides {
+  ''?: any;
+  border?: any;
+  radius?: any;
+  p?: any;
+  m?: any;
+}
+
 const sides = ['', 'top', 'bottom', 'left', 'right', 'start', 'end'];
 const getSidesFor = (
-  property: string,
+  property: keyof keysWithSides,
   f: (position: string) => {},
   shortPosition: boolean = false
-) =>
+): keysWithSides =>
   sides.reduce(
     (acc, current) => ({
       ...acc,
@@ -36,7 +43,7 @@ const getSidesFor = (
     {}
   );
 
-const dictionary: AnyObject = {
+const dictionary = {
   // background color
   bg: getColorFor('backgroundColor'),
   //typography
@@ -49,6 +56,7 @@ const dictionary: AnyObject = {
   uppercase: keyAsValue('textTransform'),
   lowercase: keyAsValue('textTransform'),
   capitalize: keyAsValue('textTransform'),
+  bold: keyAsValue('fontWeight'),
   weight: getFontWeightFor('fontWeight'),
   tint: getColorFor('tintColor'),
   // borders
@@ -93,5 +101,7 @@ const dictionary: AnyObject = {
   elevation: compose((value: string) => Number(value))('elevation'),
   opacity: compose((value: string) => Number(value) / 100)('opacity'),
 };
+
+export type DictionaryKeys = keyof typeof dictionary;
 
 export default dictionary;

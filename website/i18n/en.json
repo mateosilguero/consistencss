@@ -29,6 +29,9 @@
       "flex": {
         "title": "Flex"
       },
+      "getsizefor": {
+        "title": "getSizeFor"
+      },
       "getting-started": {
         "title": "Installation",
         "sidebar_label": "Installation"
@@ -120,6 +123,15 @@
       },
       "version-0.5.0/version-0.5.0-theme": {
         "title": "Theme"
+      },
+      "version-0.6.0/version-0.6.0-extend": {
+        "title": "Extend"
+      },
+      "version-0.6.0/version-0.6.0-getsizefor": {
+        "title": "getSizeFor"
+      },
+      "version-0.6.0/version-0.6.0-typography": {
+        "title": "Typography"
       }
     },
     "links": {
