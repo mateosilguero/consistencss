@@ -26,7 +26,7 @@ yarn add consistencss
 
 > android
 
-If [Hermes](https://reactnative.dev/docs/hermes)nnbm6 is enabled in your project, you probably will see a red screen with the "Property 'Proxy' doesn't exist, js engine: hermes" message.
+If [Hermes](https://reactnative.dev/docs/hermes) is enabled in your project, you probably will see a red screen with the "Property 'Proxy' doesn't exist, js engine: hermes" message.
 
 > Quick fix: disable Hermes (not recommend).
 
