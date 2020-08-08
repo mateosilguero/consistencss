@@ -130,6 +130,9 @@
       "version-0.6.0/version-0.6.0-getsizefor": {
         "title": "getSizeFor"
       },
+      "version-0.6.0/version-0.6.0-getting-started": {
+        "title": "Installation"
+      },
       "version-0.6.0/version-0.6.0-typography": {
         "title": "Typography"
       }
