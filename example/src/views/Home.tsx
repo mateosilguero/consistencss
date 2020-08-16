@@ -18,7 +18,7 @@ const Home: FC<{
   return (
     <ScrollView>
       <View style={apply(C.bgRed, C.h16, C.wscreen)}>
-        <Text style={apply(C.textYellow, C.font3)}>yellow</Text>
+        <Text style={apply(C.textYellow, C.fontM)}>yellow</Text>
       </View>
       <View style={apply(C.bgMagenta, C.h4, C.wHalf)} />
       <View style={apply(C.bgYellow, C.h3)} />

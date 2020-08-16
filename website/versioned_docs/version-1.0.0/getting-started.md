@@ -1,7 +1,8 @@
 ---
-id: getting-started
+id: version-1.0.0-getting-started
 title: Installation
 sidebar_label: Installation
+original_id: getting-started
 ---
 
 # Consistencss

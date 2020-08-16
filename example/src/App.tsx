@@ -15,7 +15,11 @@ extend({
     TextInput: apply(C.borderRed, C.borderHairline, C.font4, C.px3),
     TouchableOpacity: apply(C.bgPrimary),
   },
-  sizing: {},
+  sizing: {
+    xs: 12,
+    s: 14,
+    m: 16,
+  },
 });
 
 const Stack = createStackNavigator();

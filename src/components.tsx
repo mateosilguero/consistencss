@@ -10,7 +10,7 @@ import {
   ViewProps,
 } from 'react-native';
 import { components } from './constants';
-import { apply } from './';
+import { apply } from './core';
 
 interface Props {
   children?: ReactNode;

@@ -3,9 +3,8 @@ import { StyleSheet } from 'react-native';
 import { Suite } from 'benchmark';
 import C, { apply } from '../index';
 
-const suite = new Suite();
-
-test("perfomance matters, consistencss's apply should be similar than StyleSheet.create", () => {
+test("perfomance matters, consistencss's apply should be faster than StyleSheet.create", () => {
+  const suite = new Suite();
   suite
     .add('StyleSheet.create', function() {
       StyleSheet.create({
@@ -26,8 +25,9 @@ test("perfomance matters, consistencss's apply should be similar than StyleSheet
       console.log(String(event.target));
     })
     .on('complete', function() {
+      // expect(this[0].hz - this[1].hz).toBeLessThan(3000);
       // @ts-ignore
-      expect(this[0].hz - this[1].hz).toBeLessThan(3000);
+      expect(this.filter('fastest').map('name')[0]).toBe('apply');
     })
     .run();
 });

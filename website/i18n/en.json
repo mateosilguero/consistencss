@@ -135,6 +135,13 @@
       },
       "version-0.6.0/version-0.6.0-typography": {
         "title": "Typography"
+      },
+      "version-1.0.0/version-1.0.0-extend": {
+        "title": "Extend"
+      },
+      "version-1.0.0/version-1.0.0-getting-started": {
+        "title": "Installation",
+        "sidebar_label": "Installation"
       }
     },
     "links": {
