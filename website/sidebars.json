@@ -1,6 +1,6 @@
 {
   "docs": {
-    "Getting started": ["getting-started"]
+    "Getting started": ["getting-started", "troubleshooting", "usage"]
   },
   "api": {
     "Consistencss": [
@@ -15,6 +15,7 @@
     ],
     "Methods": [
       "apply",
+      "boxShadow",
       "extend",
       "exists",
       "getsizefor",

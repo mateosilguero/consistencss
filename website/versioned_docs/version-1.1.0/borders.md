@@ -1,6 +1,7 @@
 ---
-id: borders
+id: version-1.1.0-borders
 title: Borders
+original_id: borders
 ---
 
 ## border

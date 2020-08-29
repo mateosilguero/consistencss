@@ -1,6 +1,7 @@
 ---
-id: extend
+id: version-1.1.0-extend
 title: Extend
+original_id: extend
 ---
 
 `extends(config: {}) => void`

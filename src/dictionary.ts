@@ -1,6 +1,8 @@
 import {
   getColorForKey,
+  getFontFamily,
   getFontWeigth,
+  getBoxShadow,
   getSizeForKey,
   getTextAlign,
 } from './getters';
@@ -49,6 +51,7 @@ const dictionary = {
   //typography
   text: getColorFor('color'),
   font: getSizeFor('fontSize'),
+  family: compose(getFontFamily)('fontFamily'),
   align: geAlignmentFor('textAlign'),
   alignvertical: geAlignmentFor('textAlignVertical'),
   line: getSizeFor('lineHeight'),
@@ -100,6 +103,7 @@ const dictionary = {
   // effects
   elevation: compose((value: string) => Number(value))('elevation'),
   opacity: compose((value: string) => Number(value) / 100)('opacity'),
+  shadow: getBoxShadow,
 };
 
 export type DictionaryKeys = keyof typeof dictionary;

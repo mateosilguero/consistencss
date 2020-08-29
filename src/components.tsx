@@ -17,13 +17,13 @@ interface Props {
 }
 
 export const Text = ({ children, style = {}, ...rest }: Props & TextProps) => (
-  <RNText style={apply(components.Text, style)} {...rest}>
+  <RNText style={apply(components.text, style)} {...rest}>
     {children}
   </RNText>
 );
 
 export const TextInput = ({ style = {}, ...rest }: TextInputProps) => (
-  <RNTextInput style={apply(components.TextInput, style)} {...rest} />
+  <RNTextInput style={apply(components.textinput, style)} {...rest} />
 );
 
 export const TouchableOpacity = ({
@@ -32,7 +32,7 @@ export const TouchableOpacity = ({
   ...rest
 }: Props & TouchableOpacityProps) => (
   <RNTouchableOpacity
-    style={apply(components.TouchableOpacity, style)}
+    style={apply(components.touchableopacity, style)}
     {...rest}
   >
     {children}
@@ -40,7 +40,7 @@ export const TouchableOpacity = ({
 );
 
 export const View = ({ children, style = {}, ...rest }: Props & ViewProps) => (
-  <RNView style={apply(components.View, style)} {...rest}>
+  <RNView style={apply(components.view, style)} {...rest}>
     {children}
   </RNView>
 );

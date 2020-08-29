@@ -7,11 +7,6 @@
 
 const React = require('react');
 
-const CompLibrary = require('../../core/CompLibrary.js');
-
-const Container = CompLibrary.Container;
-const GridBlock = CompLibrary.GridBlock;
-
 class HomeSplash extends React.Component {
   render() {
     const { siteConfig, language = '' } = this.props;
@@ -78,33 +73,26 @@ class Index extends React.Component {
     const { config: siteConfig, language = '' } = this.props;
     const { baseUrl } = siteConfig;
 
-    const Block = props => (
-      <Container
-        padding={['bottom', 'top']}
-        id={props.id}
-        background={props.background}
-      >
-        <GridBlock
-          align="center"
-          contents={props.children}
-          layout={props.layout}
-        />
-      </Container>
-    );
-
-    const Description = () => (
-      <Block background="dark">
-        {[
-          {
-            content:
-              'Compose styles based on utility and reusing from consistencss, set your theme, and enjoy !',
-            image: `${baseUrl}img/undraw_note_list.svg`,
-            imageAlign: 'right',
-            title: 'Style your components easily',
-          },
-        ]}
-      </Block>
-    );
+    const features = [
+      {
+        content:
+          'Compose styles based on utility and reusing from consistencss, set your theme, and enjoy !',
+        image: `${baseUrl}img/undraw_researching.svg`,
+        title: 'Style your components easily',
+      },
+      {
+        content:
+          'Set your base size and have a consistencess UI trough your all applications.',
+        image: `${baseUrl}img/undraw_circles.svg`,
+        title: 'Focus on pixel perfect !',
+      },
+      {
+        content:
+          'Consistencss gives you agility, with pre-built styles and cross-platform styles.',
+        image: `${baseUrl}img/undraw_product.svg`,
+        title: 'Build reutilizable componentes in minutes',
+      },
+    ];
 
     const Showcase = () => {
       const showcase = siteConfig.users
@@ -134,10 +122,24 @@ class Index extends React.Component {
     return (
       <div>
         <HomeSplash siteConfig={siteConfig} language={language} />
-        <div className="mainContainer">
-          <Description />
-          <Showcase />
-        </div>
+        <section>
+          <div className="features">
+            <div className="row">
+              {features.map(({ image, title, content }, idx) => (
+                <div key={idx} className="feature">
+                  {image && (
+                    <div className="text--center margin-bottom--lg">
+                      <img alt={title} src={image} />
+                    </div>
+                  )}
+                  <h3>{title}</h3>
+                  <p>{content}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+        <Showcase />
       </div>
     );
   }

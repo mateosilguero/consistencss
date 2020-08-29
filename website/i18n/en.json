@@ -14,6 +14,9 @@
       "borders": {
         "title": "Borders"
       },
+      "boxShadow": {
+        "title": "boxShadow"
+      },
       "components": {
         "title": "Components"
       },
@@ -48,8 +51,16 @@
       "theme": {
         "title": "Theme"
       },
+      "troubleshooting": {
+        "title": "Troubleshooting",
+        "sidebar_label": "Troubleshooting"
+      },
       "typography": {
         "title": "Typography"
+      },
+      "usage": {
+        "title": "Usage",
+        "sidebar_label": "Usage"
       },
       "version-0.1.1/version-0.1.1-apply": {
         "title": "Apply"
@@ -142,6 +153,36 @@
       "version-1.0.0/version-1.0.0-getting-started": {
         "title": "Installation",
         "sidebar_label": "Installation"
+      },
+      "version-1.1.0/version-1.1.0-borders": {
+        "title": "Borders"
+      },
+      "version-1.1.0/version-1.1.0-boxShadow": {
+        "title": "boxShadow"
+      },
+      "version-1.1.0/version-1.1.0-effects": {
+        "title": "Effects"
+      },
+      "version-1.1.0/version-1.1.0-extend": {
+        "title": "Extend"
+      },
+      "version-1.1.0/version-1.1.0-getsizefor": {
+        "title": "getSizeFor"
+      },
+      "version-1.1.0/version-1.1.0-getting-started": {
+        "title": "Installation",
+        "sidebar_label": "Installation"
+      },
+      "version-1.1.0/version-1.1.0-troubleshooting": {
+        "title": "Troubleshooting",
+        "sidebar_label": "Troubleshooting"
+      },
+      "version-1.1.0/version-1.1.0-typography": {
+        "title": "Typography"
+      },
+      "version-1.1.0/version-1.1.0-usage": {
+        "title": "Usage",
+        "sidebar_label": "Usage"
       }
     },
     "links": {

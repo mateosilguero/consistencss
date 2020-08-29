@@ -1,5 +1,6 @@
 import C, {
   apply,
+  boxShadow,
   exists,
   extend,
   Text,
@@ -127,16 +128,32 @@ test('extend should change the default values from constants', () => {
     },
     colors: {
       primary: 'blue',
+      primaryDark: 'darkblue',
+    },
+    fonts: {
+      primary: 'Roboto',
     },
     sizing: {
-      base: 8,
+      base: 2,
     },
   });
   expect(C.bgPrimary).toEqual({
     backgroundColor: 'blue',
   });
+  expect(C.bgPrimaryDark).toEqual({
+    backgroundColor: 'darkblue',
+  });
+  expect(C.bgPrimarydark).toEqual({
+    backgroundColor: 'darkblue',
+  });
   expect(C.m4).toEqual({
     margin: 8,
+  });
+  expect(C.familyConsolas).toEqual({
+    fontFamily: 'consolas',
+  });
+  expect(C.familyPrimary).toEqual({
+    fontFamily: 'Roboto',
   });
 });
 
@@ -167,4 +184,16 @@ test('extend should change the default style from components', () => {
   expect(Text({}).props.style).toEqual([{ color: 'red' }, {}]);
   expect(TouchableOpacity({}).props.style).toEqual([{ padding: 8 }, {}]);
   expect(TextInput({}).props.style).toEqual([{ paddingHorizontal: 4 }, {}]);
+});
+
+test('boxShadow should generate shadow box object', () => {
+  expect(boxShadow(1, 0, 2, 4, 'black', 0.2)).toEqual({
+    shadowColor: 'black',
+    shadowOffset: {
+      height: 2,
+      width: 0,
+    },
+    shadowOpacity: 0.2,
+    shadowRadius: 4,
+  });
 });

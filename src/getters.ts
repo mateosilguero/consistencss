@@ -17,7 +17,7 @@ export const getTextAlign = (name: string) => {
 };
 
 export const getSizeFor = (size: number) =>
-  (Number(size) / 4) * constants.sizing.base;
+  Number(size) * constants.sizing.base;
 
 export const getSizeForKey = (size: string) => {
   const nSize = Number(size);
@@ -31,6 +31,10 @@ export const getSizeForKey = (size: string) => {
   return constants.sizing[size] || getSizeFor(nSize);
 };
 
+export const getFontFamily = (family: string) => {
+  return constants.fonts[family] || family;
+};
+
 export const getFontWeigth = (weight: string) => {
   if (!constants.fontWeights[weight]) {
     warnOnInvalidKey(
@@ -40,4 +44,15 @@ export const getFontWeigth = (weight: string) => {
     );
   }
   return constants.fontWeights[weight];
+};
+
+export const getBoxShadow = (shadowSize: keyof typeof constants.shadows) => {
+  if (!constants.shadows[shadowSize]) {
+    warnOnInvalidKey(
+      `Shadow size ${shadowSize} doesn't exists. Try some of this ${Object.keys(
+        constants.shadows
+      )}.`
+    );
+  }
+  return constants.shadows[shadowSize];
 };

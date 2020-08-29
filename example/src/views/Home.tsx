@@ -27,14 +27,16 @@ const Home: FC<{
       <View style={apply(C.bgBlue, C.h2)} />
       <View style={apply({ backgroundColor: 'green' }, C.h3)} />
       <Text style={apply(C.textBlue, C.font4)}>blue</Text>
-      <Text style={apply(C.textSecondary, C.weightBold, C.mt_1)}>
+      <Text
+        style={apply(C.textSecondary, C.weightBold, C.mt_1, C.familyPrimary)}
+      >
         secondary
       </Text>
-      <TouchableOpacity>
+      <TouchableOpacity style={C.shadow}>
         <Text style={C.weightBlack}>primary</Text>
       </TouchableOpacity>
       <TouchableOpacity
-        style={apply(C.m4, C.radius4)}
+        style={apply(C.m4, C.mb0, C.radius4, C.shadowXl)}
         onPress={() => navigation.navigate('Another')}
       >
         <Text style={apply(C.textWhite)}>Navigate</Text>

@@ -41,4 +41,17 @@ test('atomGenerator should return a new atom', () => {
   expect(dictionary.overflow('scroll')).toEqual({
     overflow: 'scroll',
   });
+  expect(dictionary.family('consolas')).toEqual({
+    fontFamily: 'consolas',
+  });
+  expect(dictionary.shadow('md')).toEqual({
+    shadowColor: 'black',
+    shadowOffset: {
+      height: 2,
+      width: 0,
+    },
+    shadowOpacity: 0.2,
+    shadowRadius: 4,
+  });
+  expect(dictionary.shadow('notexists')).toEqual(undefined);
 });

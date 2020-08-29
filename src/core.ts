@@ -29,7 +29,7 @@ export const extend = (custom: Partial<typeof constants>) => {
     const t = type as ConstantsKey;
     Object.keys(custom[t] || {}).forEach(method => {
       if (constants.hasOwnProperty(t)) {
-        constants[t][method] = custom[t]?.[method];
+        constants[t][method.toLowerCase()] = custom[t]?.[method];
       }
     });
   });

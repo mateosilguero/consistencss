@@ -1,6 +1,7 @@
 ---
-id: effects
+id: version-1.1.0-effects
 title: Effects
+original_id: effects
 ---
 
 ## elevation (Android only)

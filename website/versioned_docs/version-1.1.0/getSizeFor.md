@@ -1,6 +1,7 @@
 ---
-id: getsizefor
+id: version-1.1.0-getsizefor
 title: getSizeFor
+original_id: getsizefor
 ---
 
 `getSizeFor(number) => number`

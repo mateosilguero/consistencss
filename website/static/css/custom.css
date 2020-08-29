@@ -32,3 +32,26 @@
   width: 200px;
   height: 200px;
 }
+
+.features {
+  color: #444;
+  background: #fafafa;
+  padding: 64px 32px;
+}
+
+.features img {
+  height: 200px;
+}
+
+.feature {
+  text-align: center;
+  max-width: 300px;
+  margin: 16px 0;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}

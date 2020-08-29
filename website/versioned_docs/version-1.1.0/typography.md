@@ -1,6 +1,7 @@
 ---
-id: typography
+id: version-1.1.0-typography
 title: Typography
+original_id: typography
 ---
 
 properties for texts:
