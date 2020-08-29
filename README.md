@@ -105,22 +105,22 @@ const App = () => {
 };
 ```
 
-or change the default base size (16):
+or change the default base size (4):
 
 ```js
 import { Text, View } from 'react-native';
 import C, { apply, extend } from 'consistencss';
 
-// the default base is 16, so m4 = margin: 16
+// the default base is 4, so m4 = margin: 16
 // m2 = margin: 8
 
 extend({
   sizing: {
-    base: 8,
+    base: 2,
   },
 });
 
-// chaging to 8, m4 = margin: 8
+// chaging to 2, m4 = margin: 8
 // m2 = margin: 4
 
 const App = () => {
