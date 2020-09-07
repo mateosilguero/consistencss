@@ -28,6 +28,30 @@ const users = [
       'https://play.google.com/store/apps/details?id=com.JSand&hl=en_US',
     pinned: true,
   },
+  {
+    caption: 'CookUnity - Chefs',
+    image:
+      'https://lh3.googleusercontent.com/v6ilLz_taz_w8TnxqyC9A6kZbk1pPveWuCanyXwBj0cbI7Gq02gcnHGZ8TVGZ3yznvY=s180-rw',
+    infoLink:
+      'https://play.google.com/store/apps/details?id=us.CookUnity.chefsApp',
+    pinned: true,
+  },
+  {
+    caption: 'CookUnity - Packer',
+    image:
+      'https://lh3.googleusercontent.com/IoFuXcLfORwYdvyNN5VpSPrGNk4Oq2QVw2f7ZtAMA0-2GR-Or37_e_1KaJVt6evQaw=s180-rw',
+    infoLink:
+      'https://play.google.com/store/apps/details?id=us.CookUnity.packerApp',
+    pinned: true,
+  },
+  {
+    caption: 'Prestadores',
+    image:
+      'https://lh3.googleusercontent.com/KFOPT3YcZAB0kvdrR3hzvfRhej33ZPa727O1gsfg3mI4D4LCm7BVeqwc50NL37B-nIk=s180-rw',
+    infoLink:
+      'https://play.google.com/store/apps/details?id=com.leiteszeke.juntos.prestadores',
+    pinned: true,
+  },
 ];
 
 const siteConfig = {
