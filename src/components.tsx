@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import React, { FC } from 'react';
 import {
   Text as RNText,
   TextProps,
@@ -12,11 +12,7 @@ import {
 import { components } from './constants';
 import { apply } from './core';
 
-interface Props {
-  children?: ReactNode;
-}
-
-export const Text = ({ children, style = {}, ...rest }: Props & TextProps) => (
+export const Text: FC<TextProps> = ({ children, style = {}, ...rest }) => (
   <RNText style={apply(components.text, style)} {...rest}>
     {children}
   </RNText>
@@ -26,11 +22,11 @@ export const TextInput = ({ style = {}, ...rest }: TextInputProps) => (
   <RNTextInput style={apply(components.textinput, style)} {...rest} />
 );
 
-export const TouchableOpacity = ({
+export const TouchableOpacity: FC<TouchableOpacityProps> = ({
   children,
   style = {},
   ...rest
-}: Props & TouchableOpacityProps) => (
+}) => (
   <RNTouchableOpacity
     style={apply(components.touchableopacity, style)}
     {...rest}
@@ -39,7 +35,7 @@ export const TouchableOpacity = ({
   </RNTouchableOpacity>
 );
 
-export const View = ({ children, style = {}, ...rest }: Props & ViewProps) => (
+export const View: FC<ViewProps> = ({ children, style = {}, ...rest }) => (
   <RNView style={apply(components.view, style)} {...rest}>
     {children}
   </RNView>

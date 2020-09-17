@@ -9,6 +9,9 @@ export const apply = (
 ): StyleProp<Styles | {}> =>
   styles.flatMap(s => (typeof s === 'string' ? C[s] : s));
 
+export const classNames = (classes: string) =>
+  classes.split(' ').map(name => C[name]);
+
 type ConstantsKey = keyof typeof constants;
 
 const StylesCacheManager = {

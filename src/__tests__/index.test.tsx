@@ -1,6 +1,7 @@
 import C, {
   apply,
   boxShadow,
+  classNames,
   exists,
   extend,
   Text,
@@ -104,6 +105,14 @@ test('apply should always return a flatted array', () => {
   ]);
 });
 
+test('classNames should return an array of styles by class names', () => {
+  expect(classNames('m4 p2 textRed')).toEqual([
+    { margin: 16 },
+    { padding: 8 },
+    { color: 'red' },
+  ]);
+});
+
 test('exists return true is a key is valid', () => {
   expect(exists('m4')).toBe(true);
   expect(exists('m')).toBe(true);
@@ -158,9 +167,9 @@ test('extend should change the default values from constants', () => {
 });
 
 test('extend should change the default style from components', () => {
-  expect(View({}).props.style).toEqual([{}, {}]);
-  expect(Text({}).props.style).toEqual([{}, {}]);
-  expect(TouchableOpacity({}).props.style).toEqual([{}, {}]);
+  expect(View({})?.props.style).toEqual([{}, {}]);
+  expect(Text({})?.props.style).toEqual([{}, {}]);
+  expect(TouchableOpacity({})?.props.style).toEqual([{}, {}]);
   expect(TextInput({}).props.style).toEqual([{}, {}]);
   extend({
     components: {
@@ -171,18 +180,18 @@ test('extend should change the default style from components', () => {
     },
     colors: undefined,
   });
-  expect(View({}).props.style).toEqual([{ margin: 8 }, {}]);
-  expect(View({ style: apply(C.p4, 'row') }).props.style).toEqual([
+  expect(View({})?.props.style).toEqual([{ margin: 8 }, {}]);
+  expect(View({ style: apply(C.p4, 'row') })?.props.style).toEqual([
     { margin: 8 },
     { padding: 8 },
     { flexDirection: 'row' },
   ]);
-  expect(View({ style: C.bgRed }).props.style).toEqual([
+  expect(View({ style: C.bgRed })?.props.style).toEqual([
     { margin: 8 },
     { backgroundColor: 'red' },
   ]);
-  expect(Text({}).props.style).toEqual([{ color: 'red' }, {}]);
-  expect(TouchableOpacity({}).props.style).toEqual([{ padding: 8 }, {}]);
+  expect(Text({})?.props.style).toEqual([{ color: 'red' }, {}]);
+  expect(TouchableOpacity({})?.props.style).toEqual([{ padding: 8 }, {}]);
   expect(TextInput({}).props.style).toEqual([{ paddingHorizontal: 4 }, {}]);
 });
 

@@ -17,6 +17,9 @@
       "boxShadow": {
         "title": "boxShadow"
       },
+      "classNames": {
+        "title": "classNames"
+      },
       "components": {
         "title": "Components"
       },
@@ -183,6 +186,9 @@
       "version-1.1.0/version-1.1.0-usage": {
         "title": "Usage",
         "sidebar_label": "Usage"
+      },
+      "version-1.2.0/version-1.2.0-classNames": {
+        "title": "classNames"
       }
     },
     "links": {
