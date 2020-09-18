@@ -9,8 +9,19 @@ export const apply = (
 ): StyleProp<Styles | {}> =>
   styles.flatMap(s => (typeof s === 'string' ? C[s] : s));
 
-export const classNames = (classes: string) =>
-  classes.split(' ').map(name => C[name]);
+export const classNames = (
+  classes: string,
+  conditionalClasses: DynamicObject<boolean> = {}
+) =>
+  Object.entries(conditionalClasses)
+    .reduce(
+      (current, [key, value]) =>
+        value
+          ? current.concat(key.replace(/ +(?= )/g, '').split(' '))
+          : current,
+      classes.trim().split(' ')
+    )
+    .map(name => C[name]);
 
 type ConstantsKey = keyof typeof constants;
 

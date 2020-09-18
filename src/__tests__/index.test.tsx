@@ -111,6 +111,18 @@ test('classNames should return an array of styles by class names', () => {
     { padding: 8 },
     { color: 'red' },
   ]);
+  expect(
+    classNames('mt4', {
+      p2: true,
+      'textRed mb2': 4 % 2 === 0,
+      font4: false,
+    })
+  ).toEqual([
+    { marginTop: 16 },
+    { padding: 8 },
+    { color: 'red' },
+    { marginBottom: 8 },
+  ]);
 });
 
 test('exists return true is a key is valid', () => {
