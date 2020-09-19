@@ -1,6 +1,7 @@
 ---
-id: classNames
+id: version-1.3.0-classNames
 title: classNames
+original_id: classNames
 ---
 
 > API inspired by https://github.com/JedWatson/classnames
