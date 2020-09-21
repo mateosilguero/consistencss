@@ -13,15 +13,15 @@ export const classNames = (
   classes: string,
   conditionalClasses: DynamicObject<boolean> = {}
 ) =>
-  Object.entries(conditionalClasses)
-    .reduce(
+  apply(
+    ...Object.entries(conditionalClasses).reduce(
       (current, [key, value]) =>
         value
           ? current.concat(key.replace(/ +(?= )/g, '').split(' '))
           : current,
       classes.trim().split(' ')
     )
-    .map(name => C[name]);
+  );
 
 type ConstantsKey = keyof typeof constants;
 
@@ -57,14 +57,18 @@ const isAValidKey = (key: string): boolean =>
 const handler = {
   get: function(target: StylesObject, name: string): StylesObject {
     if (!isAValidKey(name)) return target;
-    const [key, value] = camelCaseSplit(name) as [DictionaryKeys, string];
-    if (!dictionary.hasOwnProperty(key)) {
+    const [key, value] = camelCaseSplit(name);
+    if (
+      !dictionary.hasOwnProperty(key) &&
+      !constants.classes.hasOwnProperty(key)
+    ) {
       warnOnInvalidKey(`The key ${key} doesnt exists`);
       return target;
     }
     const valueInCache = StylesCacheManager.get(name);
     if (valueInCache) return valueInCache;
-    const valueForKey = dictionary[key]?.(value, key);
+    const valueForKey =
+      dictionary[key as DictionaryKeys]?.(value, key) || constants.classes[key];
     StylesCacheManager.set(name, valueForKey);
     return valueForKey;
   },
