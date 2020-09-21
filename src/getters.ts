@@ -5,6 +5,9 @@ export const getColorForKey = (colorName: string) => {
   return constants.colors[colorName] || colorName;
 };
 
+export const getCustomClass = (className: string) =>
+  constants.classes[className.replace('class', '').toLowerCase()] || {};
+
 export const getTextAlign = (name: string) => {
   if (!constants.alignment[name]) {
     warnOnInvalidKey(

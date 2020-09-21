@@ -5,6 +5,7 @@ import {
   getBoxShadow,
   getSizeForKey,
   getTextAlign,
+  getCustomClass,
 } from './getters';
 import { atomGenerator, capitalize } from './utils';
 import constants from './constants';
@@ -19,6 +20,7 @@ const getColorFor = compose(getColorForKey);
 const getSizeFor = compose(getSizeForKey);
 const getFontWeightFor = compose(getFontWeigth);
 const geAlignmentFor = compose(getTextAlign);
+const getClass = compose(getCustomClass);
 const keyAsValue = compose((_: string, k: string) => k);
 
 interface keysWithSides {
@@ -104,6 +106,7 @@ const dictionary = {
   elevation: compose((value: string) => Number(value))('elevation'),
   opacity: compose((value: string) => Number(value) / 100)('opacity'),
   shadow: getBoxShadow,
+  class: getClass('class'),
 };
 
 export type DictionaryKeys = keyof typeof dictionary;

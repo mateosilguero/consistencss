@@ -12,7 +12,7 @@ export const apply = (
 export const classNames = (
   classes: string,
   conditionalClasses: DynamicObject<boolean> = {}
-) =>
+): DynamicObject<string>[] =>
   Object.entries(conditionalClasses)
     .reduce(
       (current, [key, value]) =>
@@ -21,7 +21,15 @@ export const classNames = (
           : current,
       classes.trim().split(' ')
     )
-    .map(name => C[name]);
+    .map(name => {
+      if (name.includes('class', 0)) {
+        const customClass = C[name] as { class: string };
+        return classNames(customClass.class);
+      }
+
+      return C[name];
+    })
+    .flat();
 
 type ConstantsKey = keyof typeof constants;
 

@@ -20,6 +20,8 @@ const colors: StringObject = {};
 
 const fonts: StringObject = {};
 
+const classes: StringObject = {};
+
 const fontWeights: StringObject = {
   '': 'normal',
   hairline: '100',
@@ -86,4 +88,5 @@ export default {
   fontWeights,
   shadows,
   sizing,
+  classes,
 };

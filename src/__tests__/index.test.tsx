@@ -125,6 +125,19 @@ test('classNames should return an array of styles by class names', () => {
   ]);
 });
 
+test('compose classes', () => {
+  extend({
+    classes: {
+      disabled: 'bgGray borderRed',
+    },
+  });
+
+  expect(classNames('classDisabled')).toEqual([
+    { backgroundColor: 'gray' },
+    { borderColor: 'red' },
+  ]);
+});
+
 test('exists return true is a key is valid', () => {
   expect(exists('m4')).toBe(true);
   expect(exists('m')).toBe(true);
