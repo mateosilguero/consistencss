@@ -26,6 +26,9 @@ extend({
         base: 8,
         xs: 12
     },
+    classes: {
+        debug: apply(C.border1, C.borderRed),
+    },
     colors: {
         primary: 'cornflowerblue',
         secondary: 'green',
@@ -48,7 +51,7 @@ return (
         <Text style={apply(C.textPrimary, C.font8, C.uppercase)}>
             Hello
         </Text>
-        <Text style={[C.fontXs, C.familyPrimary]}>Hello</Text>
+        <Text style={[C.fontXs, C.familyPrimary, C.debug]}>Hello</Text>
         {/* this View have margin 8 and padding 4 */}
         <View>
             <Text style={subtitle}>

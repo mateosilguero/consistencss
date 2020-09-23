@@ -20,7 +20,7 @@ const colors: StringObject = {};
 
 const fonts: StringObject = {};
 
-const classes: StringObject = {};
+const classes: DynamicObject<StyleProp<Styles | {}>> = {};
 
 const fontWeights: StringObject = {
   '': 'normal',

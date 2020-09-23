@@ -128,14 +128,22 @@ test('classNames should return an array of styles by class names', () => {
 test('compose classes', () => {
   extend({
     classes: {
-      disabled: 'bgGray borderRed',
+      disabled: classNames('bgGray borderRed'),
+      debug: apply(C.border1, C.borderRed),
     },
   });
 
-  expect(classNames('classDisabled')).toEqual([
+  expect(classNames('disabled')).toEqual([
     { backgroundColor: 'gray' },
     { borderColor: 'red' },
   ]);
+
+  expect(C.disabled).toEqual([
+    { backgroundColor: 'gray' },
+    { borderColor: 'red' },
+  ]);
+
+  expect(C.debug).toEqual([{ borderWidth: 4 }, { borderColor: 'red' }]);
 });
 
 test('exists return true is a key is valid', () => {
