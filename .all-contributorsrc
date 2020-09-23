@@ -1,0 +1,24 @@
+{
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "contributors": [
+    {
+      "login": "leiteszeke",
+      "name": "Ezequiel Leites",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/1316339?v=4",
+      "profile": "https://leites.dev",
+      "contributions": [
+        "code"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "projectName": "consistencss",
+  "projectOwner": "mateosilguero",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "skipCi": true
+}
