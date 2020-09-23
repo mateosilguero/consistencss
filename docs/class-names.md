@@ -15,14 +15,23 @@ const App = () => {
 };
 ```
 
-```
-const App = ({ withBg, withMargin, index }) => {
+```js
+import { extend } from 'consistencss';
+
+extend({
+  classes: {
+    disabled: classNames('bgGrey'),
+  },
+});
+
+const App = ({ withBg, withMargin, index, disabled }) => {
   return (
     <View
       style={classNames('shadowMd p2 radius4', {
         bgRed: withBg,
+        disabled,
         'mx2 my4': withMargin,
-        wHalf: index % 2 === 0
+        wHalf: index % 2 === 0,
       })}
     >
       ...
