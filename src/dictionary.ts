@@ -18,7 +18,7 @@ const compose = (transformer: Function = (v: string) => v) => (
 const getColorFor = compose(getColorForKey);
 const getSizeFor = compose(getSizeForKey);
 const getFontWeightFor = compose(getFontWeigth);
-const geAlignmentFor = compose(getTextAlign);
+const getAlignmentFor = compose(getTextAlign);
 const keyAsValue = compose((_: string, k: string) => k);
 
 interface keysWithSides {
@@ -52,8 +52,8 @@ const dictionary = {
   text: getColorFor('color'),
   font: getSizeFor('fontSize'),
   family: compose(getFontFamily)('fontFamily'),
-  align: geAlignmentFor('textAlign'),
-  alignvertical: geAlignmentFor('textAlignVertical'),
+  align: getAlignmentFor('textAlign'),
+  alignvertical: getAlignmentFor('textAlignVertical'),
   line: getSizeFor('lineHeight'),
   italic: keyAsValue('fontStyle'),
   uppercase: keyAsValue('textTransform'),
@@ -96,10 +96,10 @@ const dictionary = {
   flex: compose((value: string) => Number(value || 1))('flex'),
   row: keyAsValue('flexDirection'),
   wrap: keyAsValue('flexWrap'),
-  justify: geAlignmentFor('justifyContent'),
-  items: geAlignmentFor('alignItems'),
-  self: geAlignmentFor('alignSelf'),
-  content: geAlignmentFor('alignContent'),
+  justify: getAlignmentFor('justifyContent'),
+  items: getAlignmentFor('alignItems'),
+  self: getAlignmentFor('alignSelf'),
+  content: getAlignmentFor('alignContent'),
   // effects
   elevation: compose((value: string) => Number(value))('elevation'),
   opacity: compose((value: string) => Number(value) / 100)('opacity'),
