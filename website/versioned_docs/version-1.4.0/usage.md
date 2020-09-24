@@ -1,7 +1,8 @@
 ---
-id: usage
+id: version-1.4.0-usage
 title: Usage
 sidebar_label: Usage
+original_id: usage
 ---
 
 ```js

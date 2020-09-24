@@ -52,6 +52,11 @@ class HomeSplash extends React.Component {
       </div>
     );
 
+    const codeExaple = `
+      <View style={C}>
+      </View>
+    `;
+
     return (
       <SplashContainer>
         <div className="inner">
@@ -62,6 +67,10 @@ class HomeSplash extends React.Component {
               Getting Started
             </Button>
           </PromoSection>
+          <img
+            src={`${baseUrl}img/code_home.png`}
+            style={{ width: 500, height: 500, paddingTop: 16 }}
+          />
         </div>
       </SplashContainer>
     );

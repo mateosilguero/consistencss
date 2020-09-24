@@ -1,6 +1,6 @@
 {
   "name": "consistencss",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "description": "react native css",
   "main": "lib/commonjs/index.js",
   "module": "lib/module/index.js",
