@@ -11,7 +11,7 @@ export const camelCaseSplit = (string: string): [string, string] => {
 export const capitalize = (s: string) =>
   s.charAt(0).toUpperCase() + s.slice(1).toLowerCase();
 
-export const isEmpty = (val: Object | [] | string | null) =>
+export const isEmpty = (val: any) =>
   val == null || !Object.values(val).filter(x => x).length;
 
 export const warnOnInvalidKey = (message: string) =>

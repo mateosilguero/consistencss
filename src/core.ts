@@ -7,21 +7,42 @@ import { camelCaseSplit, isEmpty, warnOnInvalidKey } from './utils';
 export const apply = (
   ...styles: Array<StyleProp<Styles> | string>
 ): StyleProp<Styles | {}> =>
-  styles.flatMap(s => (typeof s === 'string' ? C[s] : s));
+  styles
+    .filter(s => !isEmpty(s))
+    .flatMap(s => (typeof s === 'string' ? C[s] : s));
 
 export const classNames = (
-  classes: string,
-  conditionalClasses: DynamicObject<boolean> = {}
-) =>
-  apply(
-    ...Object.entries(conditionalClasses).reduce(
-      (current, [key, value]) =>
-        value
-          ? current.concat(key.replace(/ +(?= )/g, '').split(' '))
-          : current,
-      classes.trim().split(' ')
-    )
-  );
+  ...params: Array<string | DynamicObject<boolean> | StyleProp<Styles | {}>>
+) => {
+  const styles: StyleProp<Styles | {}> = {};
+  let classes: string = '';
+
+  params.forEach(param => {
+    if (Array.isArray(param)) {
+      Object.assign(styles, ...param);
+      return;
+    }
+
+    if (typeof param === 'object') {
+      Object.entries(param || {}).forEach(([key, value]) => {
+        if (typeof value === 'boolean') {
+          if (value) {
+            classes += ` ${key.replace(/ +(?= )/g, '')}`;
+          }
+        } else {
+          Object.assign(styles, param);
+        }
+      });
+      return;
+    }
+
+    if (typeof param === 'string') {
+      classes += ` ${param}`;
+    }
+  });
+
+  return apply(...classes.split(' '), styles);
+};
 
 type ConstantsKey = keyof typeof constants;
 

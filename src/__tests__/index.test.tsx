@@ -123,6 +123,48 @@ test('classNames should return an array of styles by class names', () => {
     { color: 'red' },
     { marginBottom: 8 },
   ]);
+  expect(
+    classNames(
+      'mt4',
+      {
+        p2: true,
+      },
+      'mb2',
+      {
+        'textRed mb2': 4 % 2 === 0,
+        font4: false,
+      }
+    )
+  ).toEqual([
+    { marginTop: 16 },
+    { padding: 8 },
+    { marginBottom: 8 },
+    { color: 'red' },
+    { marginBottom: 8 },
+  ]);
+  expect(
+    classNames(
+      apply(C.bgRed, C.mt2),
+      C.font4,
+      {
+        p2: true,
+      },
+      'mb2',
+      {
+        'textRed ml2': 4 % 2 === 0,
+        font4: false,
+      }
+    )
+  ).toEqual([
+    { padding: 8 },
+    { marginBottom: 8 },
+    { color: 'red' },
+    { marginLeft: 8 },
+    { backgroundColor: 'red', fontSize: 16, marginTop: 8 },
+  ]);
+  expect(classNames(C.bgRed, C.font4, C.p2)).toEqual([
+    { backgroundColor: 'red', fontSize: 16, padding: 8 },
+  ]);
 });
 
 test('compose classes', () => {
@@ -200,10 +242,10 @@ test('extend should change the default values from constants', () => {
 });
 
 test('extend should change the default style from components', () => {
-  expect(View({})?.props.style).toEqual([{}, {}]);
-  expect(Text({})?.props.style).toEqual([{}, {}]);
-  expect(TouchableOpacity({})?.props.style).toEqual([{}, {}]);
-  expect(TextInput({}).props.style).toEqual([{}, {}]);
+  expect(View({})?.props.style).toEqual([]);
+  expect(Text({})?.props.style).toEqual([]);
+  expect(TouchableOpacity({})?.props.style).toEqual([]);
+  expect(TextInput({}).props.style).toEqual([]);
   extend({
     components: {
       View: apply(C.m4),
@@ -213,7 +255,7 @@ test('extend should change the default style from components', () => {
     },
     colors: undefined,
   });
-  expect(View({})?.props.style).toEqual([{ margin: 8 }, {}]);
+  expect(View({})?.props.style).toEqual([{ margin: 8 }]);
   expect(View({ style: apply(C.p4, 'row') })?.props.style).toEqual([
     { margin: 8 },
     { padding: 8 },
@@ -223,9 +265,9 @@ test('extend should change the default style from components', () => {
     { margin: 8 },
     { backgroundColor: 'red' },
   ]);
-  expect(Text({})?.props.style).toEqual([{ color: 'red' }, {}]);
-  expect(TouchableOpacity({})?.props.style).toEqual([{ padding: 8 }, {}]);
-  expect(TextInput({}).props.style).toEqual([{ paddingHorizontal: 4 }, {}]);
+  expect(Text({})?.props.style).toEqual([{ color: 'red' }]);
+  expect(TouchableOpacity({})?.props.style).toEqual([{ padding: 8 }]);
+  expect(TextInput({}).props.style).toEqual([{ paddingHorizontal: 4 }]);
 });
 
 test('boxShadow should generate shadow box object', () => {
