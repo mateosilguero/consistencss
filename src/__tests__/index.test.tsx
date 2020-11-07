@@ -137,8 +137,8 @@ test('classNames should return an array of styles by class names', () => {
     )
   ).toEqual([
     { marginTop: 16 },
-    { marginBottom: 8 },
     { padding: 8 },
+    { marginBottom: 8 },
     { color: 'red' },
     { marginBottom: 8 },
   ]);
@@ -151,16 +151,16 @@ test('classNames should return an array of styles by class names', () => {
       },
       'mb2',
       {
-        'textRed mb2': 4 % 2 === 0,
+        'textRed ml2': 4 % 2 === 0,
         font4: false,
       }
     )
   ).toEqual([
-    { backgroundColor: 'red', marginTop: 8, fontSize: 16 },
-    { marginBottom: 8 },
     { padding: 8 },
-    { color: 'red' },
     { marginBottom: 8 },
+    { color: 'red' },
+    { marginLeft: 8 },
+    { backgroundColor: 'red', fontSize: 16, marginTop: 8 },
   ]);
   expect(classNames(C.bgRed, C.font4, C.p2)).toEqual([
     { backgroundColor: 'red', fontSize: 16, padding: 8 },

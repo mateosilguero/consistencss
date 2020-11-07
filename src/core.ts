@@ -8,18 +8,13 @@ export const apply = (
   ...styles: Array<StyleProp<Styles> | string>
 ): StyleProp<Styles | {}> =>
   styles
-    .filter(
-      s =>
-        (s !== '' && typeof s !== 'object') ||
-        (typeof s === 'object' && !isEmpty(s))
-    )
+    .filter(s => !isEmpty(s))
     .flatMap(s => (typeof s === 'string' ? C[s] : s));
 
 export const classNames = (
   ...params: Array<string | DynamicObject<boolean> | StyleProp<Styles | {}>>
 ) => {
   const styles: StyleProp<Styles | {}> = {};
-  const conditionalClasses: DynamicObject<boolean> = {};
   let classes: string = '';
 
   params.forEach(param => {
@@ -29,9 +24,11 @@ export const classNames = (
     }
 
     if (typeof param === 'object') {
-      Object.entries(param || {}).forEach(([, value]) => {
+      Object.entries(param || {}).forEach(([key, value]) => {
         if (typeof value === 'boolean') {
-          Object.assign(conditionalClasses, param);
+          if (value) {
+            classes += ` ${key.replace(/ +(?= )/g, '')}`;
+          }
         } else {
           Object.assign(styles, param);
         }
@@ -44,16 +41,7 @@ export const classNames = (
     }
   });
 
-  return apply(
-    styles,
-    ...Object.entries(conditionalClasses).reduce(
-      (current, [key, value]) =>
-        value
-          ? current.concat(key.replace(/ +(?= )/g, '').split(' '))
-          : current,
-      classes.trim().split(' ')
-    )
-  );
+  return apply(...classes.split(' '), styles);
 };
 
 type ConstantsKey = keyof typeof constants;
