@@ -44,8 +44,6 @@ export const classNames = (
   return apply(...classes.split(' '), styles);
 };
 
-type ConstantsKey = keyof typeof constants;
-
 const StylesCacheManager = {
   cache: {} as DynamicObject<Styles>,
   get: (key: string) => StylesCacheManager.cache[key],
@@ -57,7 +55,10 @@ const StylesCacheManager = {
   },
 };
 
-export const extend = (custom: Partial<typeof constants>) => {
+type CustomConfig = Omit<typeof constants, 'classesDictionary'>;
+type ConstantsKey = keyof CustomConfig;
+
+export const extend = (custom: Partial<CustomConfig>) => {
   // clear cache to override previous values with new config
   StylesCacheManager.clear();
   Object.keys(custom).forEach((type: string) => {
@@ -68,6 +69,9 @@ export const extend = (custom: Partial<typeof constants>) => {
       }
     });
   });
+
+  constants.classesDictionary =
+    Object.entries(constants.classes).map(([k]) => camelCaseSplit(k)[0]) || [];
 };
 
 export const exists = (key: string): boolean => key in C;
@@ -79,17 +83,21 @@ const handler = {
   get: function(target: StylesObject, name: string): StylesObject {
     if (!isAValidKey(name)) return target;
     const [key, value] = camelCaseSplit(name);
+
     if (
       !dictionary.hasOwnProperty(key) &&
-      !constants.classes.hasOwnProperty(key)
+      !constants.classesDictionary.includes(key)
     ) {
       warnOnInvalidKey(`The key ${key} doesnt exists`);
       return target;
     }
     const valueInCache = StylesCacheManager.get(name);
     if (valueInCache) return valueInCache;
+
     const valueForKey =
-      dictionary[key as DictionaryKeys]?.(value, key) || constants.classes[key];
+      dictionary[key as DictionaryKeys]?.(value, key) ||
+      constants.classes[name.toLowerCase()];
+
     StylesCacheManager.set(name, valueForKey);
     return valueForKey;
   },

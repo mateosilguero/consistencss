@@ -22,6 +22,8 @@ const fonts: StringObject = {};
 
 const classes: DynamicObject<StyleProp<Styles | {}>> = {};
 
+const classesDictionary: string[] = [];
+
 const fontWeights: StringObject = {
   '': 'normal',
   hairline: '100',
@@ -89,4 +91,5 @@ export default {
   shadows,
   sizing,
   classes,
+  classesDictionary,
 };
