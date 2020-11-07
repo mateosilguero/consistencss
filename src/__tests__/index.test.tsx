@@ -231,6 +231,11 @@ test('compose classes', () => {
       disabled: classNames(null, 'bgGray borderRed'),
       debug: apply(C.border1, C.borderRed),
       letter0: { letterSpacing: 0 },
+      letter2: apply(C.borderRed, { letterSpacing: 2 }),
+      letterZero: { letterSpacing: 3 },
+      // Should get an error
+      font: { fontSize: 20 },
+      font12: { fontSize: 20 },
     },
   });
 

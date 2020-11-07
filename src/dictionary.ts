@@ -150,6 +150,4 @@ const dictionary = {
   shadow: getBoxShadow,
 };
 
-export type DictionaryKeys = keyof typeof dictionary;
-
 export default dictionary;
