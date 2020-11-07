@@ -77,7 +77,7 @@ const StylesCacheManager = {
   },
 };
 
-type CustomConfig = string | Omit<typeof constants, 'classesDictionary'>;
+type CustomConfig = Omit<typeof constants, 'classesDictionary'>;
 type ConstantsKey = keyof CustomConfig;
 
 export const extend = (custom: Partial<CustomConfig>) => {
@@ -91,6 +91,9 @@ export const extend = (custom: Partial<CustomConfig>) => {
       }
     });
   });
+
+  constants.classesDictionary =
+    Object.entries(constants.classes).map(([k]) => camelCaseSplit(k)[0]) || [];
 };
 
 export const exists = (key: string) => key in C;
@@ -105,9 +108,10 @@ const handler = {
 
     if (!isAValidKey(name)) return target;
     const [key, value] = camelCaseSplit(name);
+
     if (
       !dictionary.hasOwnProperty(key) &&
-      !constants.classes.hasOwnProperty(name)
+      !constants.classesDictionary.includes(key)
     ) {
       warnOnInvalidKey(`The key ${key} doesnt exists`);
       return target;

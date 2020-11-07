@@ -271,6 +271,11 @@ test('compose classes', () => {
     { borderColor: 'primary' },
     { color: 'blue' },
   ]);
+  expect(C.letter0).toEqual({ letterSpacing: 0 });
+
+  expect(C.letter2).toEqual([{ borderColor: 'red' }, { letterSpacing: 2 }]);
+
+  expect(C.letterZero).toEqual({ letterSpacing: 3 });
 
   expect(C.disabled).toEqual([
     { backgroundColor: 'gray' },
