@@ -4,6 +4,7 @@ import C, {
   classNames,
   exists,
   extend,
+  responsive,
   Text,
   TextInput,
   TouchableOpacity,
@@ -165,6 +166,30 @@ test('classNames should return an array of styles by class names', () => {
   expect(classNames(C.bgRed, C.font4, C.p2)).toEqual([
     { backgroundColor: 'red', fontSize: 16, padding: 8 },
   ]);
+});
+
+test('responsive util', () => {
+  extend({
+    layout: {
+      sm: {
+        lte: 300,
+      },
+      md: {
+        gte: 301,
+        lte: 500,
+      },
+      l: {
+        gte: 501,
+      },
+    },
+  });
+
+  expect(
+    responsive({
+      sm: apply(C.bgBlue),
+      l: apply(C.bgRed),
+    })
+  ).toEqual([{ backgroundColor: 'red' }]);
 });
 
 test('compose classes', () => {

@@ -28,6 +28,18 @@ extend({
     s: 14,
     m: 16,
   },
+  layout: {
+    sm: {
+      lte: 300,
+    },
+    md: {
+      gte: 301,
+      lte: 500,
+    },
+    lg: {
+      gte: 501,
+    },
+  },
 });
 
 const Stack = createStackNavigator();

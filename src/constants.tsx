@@ -16,6 +16,8 @@ export const components: DynamicObject<StyleProp<Styles | {}>> = {
   view: {},
 };
 
+const layout: DynamicObject<{ lte?: number; gte?: number }> = {};
+
 const colors: StringObject = {};
 
 const fonts: StringObject = {};
@@ -85,6 +87,7 @@ export default {
   colors,
   components,
   fonts,
+  layout,
   fontWeights,
   shadows,
   sizing,
