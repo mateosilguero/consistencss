@@ -1,4 +1,4 @@
-import { StyleProp } from 'react-native';
+import { Dimensions, StyleProp } from 'react-native';
 import constants from './constants';
 import dictionary, { DictionaryKeys } from './dictionary';
 import { DynamicObject, Styles, StylesObject } from './types';
@@ -42,6 +42,26 @@ export const classNames = (
   });
 
   return apply(...classes.split(' '), styles);
+};
+
+export const responsive = (styles: DynamicObject<StyleProp<Styles>>) => {
+  const screenWidth = Dimensions.get('screen').width;
+
+  const currentSize = Object.entries(constants.layout).reduce(
+    (acc, [key, value]) => {
+      const lte = value.lte ?? screenWidth;
+      const gte = value.gte ?? 0;
+
+      if (screenWidth >= gte && screenWidth <= lte) {
+        return key;
+      }
+
+      return acc;
+    },
+    'default'
+  );
+
+  return apply(styles[currentSize] ?? styles.default ?? {});
 };
 
 type ConstantsKey = keyof typeof constants;
