@@ -1,5 +1,5 @@
 import { Dimensions, StyleProp } from 'react-native';
-import constants from './constants';
+import constants, { Breakpoint } from './constants';
 import dictionary, { DictionaryKeys } from './dictionary';
 import { DynamicObject, Styles, StylesObject } from './types';
 import { camelCaseSplit, isEmpty, warnOnInvalidKey } from './utils';
@@ -33,10 +33,7 @@ export const classNames = (
           Object.assign(styles, param);
         }
       });
-      return;
-    }
-
-    if (typeof param === 'string') {
+    } else if (typeof param === 'string') {
       classes += ` ${param}`;
     }
   });
@@ -44,24 +41,19 @@ export const classNames = (
   return apply(...classes.split(' '), styles);
 };
 
-export const responsive = (styles: DynamicObject<StyleProp<Styles>>) => {
-  const screenWidth = Dimensions.get('screen').width;
+export const responsive = (
+  styles: Partial<Record<Breakpoint, StyleProp<Styles>>>
+) => {
+  const screenWidth = Dimensions.get('window').width;
 
-  const currentSize = Object.entries(constants.layout).reduce(
-    (acc, [key, value]) => {
-      const lte = value.lte ?? screenWidth;
-      const gte = value.gte ?? 0;
+  const currentStyle = Object.keys(styles).reduce((acc, key) => {
+    if (screenWidth >= (constants.layout[key as Breakpoint] || 0)) {
+      return styles[key as Breakpoint] as Styles;
+    }
+    return acc;
+  }, {});
 
-      if (screenWidth >= gte && screenWidth <= lte) {
-        return key;
-      }
-
-      return acc;
-    },
-    'default'
-  );
-
-  return apply(styles[currentSize] ?? styles.default ?? {});
+  return apply(currentStyle);
 };
 
 type ConstantsKey = keyof typeof constants;
@@ -101,7 +93,7 @@ const handler = {
     const [key, value] = camelCaseSplit(name);
     if (
       !dictionary.hasOwnProperty(key) &&
-      !constants.classes.hasOwnProperty(key)
+      !constants.classes.hasOwnProperty(name)
     ) {
       warnOnInvalidKey(`The key ${key} doesnt exists`);
       return target;
@@ -109,7 +101,8 @@ const handler = {
     const valueInCache = StylesCacheManager.get(name);
     if (valueInCache) return valueInCache;
     const valueForKey =
-      dictionary[key as DictionaryKeys]?.(value, key) || constants.classes[key];
+      constants.classes[name] ??
+      dictionary[key as DictionaryKeys]?.(value, key);
     StylesCacheManager.set(name, valueForKey);
     return valueForKey;
   },
@@ -133,10 +126,6 @@ const handler = {
   },
 };
 
-type Consistencss = {
-  [key in DictionaryKeys]: {};
-} & {
-  [k: string]: {};
-};
+type Consistencss = Record<DictionaryKeys, {}> & Record<string, {}>;
 
 export const C = new Proxy({}, handler) as Consistencss;

@@ -16,7 +16,18 @@ export const components: DynamicObject<StyleProp<Styles | {}>> = {
   view: {},
 };
 
-const layout: DynamicObject<{ lte?: number; gte?: number }> = {};
+export type Breakpoint = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl';
+
+// https://github.com/axilis/react-native-responsive-layout#size-classes
+// min-widths
+const layout: DynamicObject<number, Breakpoint> = {
+  xs: 0,
+  sm: 411,
+  md: 568,
+  lg: 768,
+  xl: 1024,
+  xxl: 1280,
+};
 
 const colors: StringObject = {};
 

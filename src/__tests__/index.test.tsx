@@ -171,32 +171,33 @@ test('classNames should return an array of styles by class names', () => {
 test('responsive util', () => {
   extend({
     layout: {
-      sm: {
-        lte: 300,
-      },
-      md: {
-        gte: 301,
-        lte: 500,
-      },
-      l: {
-        gte: 501,
-      },
+      sm: 300,
+      md: 500,
+      lg: 501,
     },
   });
 
   expect(
     responsive({
+      xs: apply(C.bgGreen),
       sm: apply(C.bgBlue),
-      l: apply(C.bgRed),
+      lg: apply(C.bgRed),
     })
   ).toEqual([{ backgroundColor: 'red' }]);
+
+  expect(
+    responsive({
+      xxl: apply(C.bgRed),
+    })
+  ).toEqual([]);
 });
 
 test('compose classes', () => {
   extend({
     classes: {
-      disabled: classNames('bgGray borderRed'),
+      disabled: classNames(null, 'bgGray borderRed'),
       debug: apply(C.border1, C.borderRed),
+      letter0: { letterSpacing: 0 },
     },
   });
 
@@ -211,6 +212,8 @@ test('compose classes', () => {
   ]);
 
   expect(C.debug).toEqual([{ borderWidth: 4 }, { borderColor: 'red' }]);
+
+  expect(C.letter0).toEqual({ letterSpacing: 0 });
 });
 
 test('exists return true is a key is valid', () => {

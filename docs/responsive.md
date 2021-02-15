@@ -10,16 +10,9 @@ import { apply, classNames, extend, responsive } from 'consistencss';
 
 extend({
   layout: {
-    sm: {
-      lte: 300,
-    },
-    md: {
-      gte: 301,
-      lte: 500,
-    },
-    l: {
-      gte: 501,
-    },
+    sm: 300,
+    md: 401,
+    l: 501,
   },
 });
 
@@ -37,4 +30,15 @@ const App = ({ active }) => (
     ...
   </View>
 );
+```
+
+Default screen size values:
+
+```
+xs: 0
+sm: 411
+md: 568
+lg: 768
+xl: 1024
+xxl: 1280
 ```
