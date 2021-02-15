@@ -45,6 +45,9 @@
       "layout": {
         "title": "Layout"
       },
+      "responsive": {
+        "title": "responsive"
+      },
       "sizing": {
         "title": "Sizing"
       },
@@ -202,6 +205,9 @@
       "version-1.4.0/version-1.4.0-usage": {
         "title": "Usage",
         "sidebar_label": "Usage"
+      },
+      "version-1.5.0/version-1.5.0-responsive": {
+        "title": "responsive"
       }
     },
     "links": {

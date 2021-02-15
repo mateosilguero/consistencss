@@ -21,7 +21,8 @@
       "exists",
       "getsizefor",
       "components",
-      "theme"
+      "theme",
+      "responsive"
     ]
   }
 }

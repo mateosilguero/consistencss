@@ -1,0 +1,32 @@
+{
+  "version-1.5.0-docs": {
+    "Getting started": [
+      "version-1.5.0-getting-started",
+      "version-1.5.0-troubleshooting",
+      "version-1.5.0-usage"
+    ]
+  },
+  "version-1.5.0-api": {
+    "Consistencss": [
+      "version-1.5.0-background",
+      "version-1.5.0-borders",
+      "version-1.5.0-effects",
+      "version-1.5.0-flex",
+      "version-1.5.0-layout",
+      "version-1.5.0-sizing",
+      "version-1.5.0-spacing",
+      "version-1.5.0-typography"
+    ],
+    "Methods": [
+      "version-1.5.0-apply",
+      "version-1.5.0-boxShadow",
+      "version-1.5.0-classNames",
+      "version-1.5.0-extend",
+      "version-1.5.0-exists",
+      "version-1.5.0-getsizefor",
+      "version-1.5.0-components",
+      "version-1.5.0-theme",
+      "version-1.5.0-responsive"
+    ]
+  }
+}
