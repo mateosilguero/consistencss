@@ -7,9 +7,10 @@
  */
 
 import React, { FC } from 'react';
-import { Dimensions, ScrollView, useWindowDimensions } from 'react-native';
+import { ScrollView, useWindowDimensions } from 'react-native';
 import C, {
   apply,
+  theme,
   responsive,
   Text,
   TouchableOpacity,
@@ -20,7 +21,7 @@ import { NavigationStack } from '../types';
 const Home: FC<{
   navigation: NavigationStack;
 }> = ({ navigation }) => {
-  useWindowDimensions();
+  const { width } = useWindowDimensions();
 
   const responsiveColor = responsive({
     sm: C.textGreen,
@@ -60,18 +61,13 @@ const Home: FC<{
         <Text style={apply(C.textSecondary, C.weightBold)}>right</Text>
       </View>
       <View>
-        <Text>Device width: {Dimensions.get('screen').width} px</Text>
+        <Text>Device width: {width}px</Text>
         <Text style={responsiveColor}>
-          If you are using a device with less than 301px as width, you should
-          see this in green.
-        </Text>
-        <Text style={responsiveColor}>
-          If you are using a device between 301px and 500px as width, you should
-          see this in blue.
-        </Text>
-        <Text style={responsiveColor}>
-          If you are using a device with more than 500px as width, you should
-          see this in red.
+          If you are using a device with less than {theme.layout.sm}px as width,
+          you should see this in green. If you are using a device between{' '}
+          {theme.layout.sm + 1}px and {theme.layout.lg - 1}px as width, you
+          should see this in blue. If you are using a device with more than{' '}
+          {theme.layout.lg}px as width, you should see this in red.
         </Text>
       </View>
     </ScrollView>
