@@ -8,7 +8,10 @@
   "react-native": "src/index.tsx",
   "files": [
     "src",
-    "lib"
+    "lib",
+    "!**/__tests__",
+    "!**/__fixtures__",
+    "!**/__mocks__"
   ],
   "scripts": {
     "test": "jest",
@@ -31,24 +34,22 @@
   },
   "homepage": "https://github.com/mateosilguero/consistencss#readme",
   "devDependencies": {
-    "@commitlint/config-conventional": "^8.3.4",
-    "@react-native-community/bob": "^0.10.0",
     "@react-native-community/eslint-config": "2.0.0",
     "@release-it/conventional-changelog": "^1.1.0",
     "@types/jest": "^25.1.2",
-    "@types/react": "^16.9.19",
-    "@types/react-native": "0.61.10",
+    "@types/react": "16.14.0",
+    "@types/react-native": "0.63.50",
     "benchmark": "^2.1.4",
-    "commitlint": "^8.3.4",
     "eslint": "7.9.0",
     "eslint-config-prettier": "^6.10.0",
     "eslint-plugin-prettier": "^3.1.2",
     "husky": "^4.0.1",
     "jest": "^25.1.0",
     "prettier": "^1.19.1",
-    "react": "~16.9.0",
-    "react-native": "~0.61.5",
-    "release-it": "^12.6.3",
+    "react": "16.13.1",
+    "react-native": "0.63.4",
+    "react-native-builder-bob": "^0.17.1",
+    "release-it": "14.4.1",
     "typescript": "^3.7.5"
   },
   "peerDependencies": {
@@ -108,7 +109,7 @@
       }
     }
   },
-  "@react-native-community/bob": {
+  "react-native-builder-bob": {
     "source": "src",
     "output": "lib",
     "targets": [
@@ -116,5 +117,12 @@
       "module",
       "typescript"
     ]
+  },
+  "eslintIgnore": [
+    "node_modules/",
+    "lib/"
+  ],
+  "dependencies": {
+    "node-fetch": "^2.6.1"
   }
 }
