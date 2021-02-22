@@ -5,7 +5,7 @@
 [![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square)](#contributors-)
 
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
-![consistencss](https://badgen.net/npm/v/consistencss?color=green)
+[![npm version](https://badge.fury.io/js/consistencss.svg)](https://badge.fury.io/js/consistencss)
 ![consistencss](https://badgen.net/bundlephobia/minzip/consistencss)
 ![consistencss](https://badgen.net/npm/types/consistencss)
 
