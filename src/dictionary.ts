@@ -8,10 +8,10 @@ import {
 } from './getters';
 import { atomGenerator, capitalize } from './utils';
 import constants from './constants';
-import { Dimensions } from 'react-native';
+import { Dimensions, TextStyle } from 'react-native';
 
 const compose = (transformer: Function = (v: string) => v) => (
-  property: string
+  property: keyof Omit<TextStyle, 'testID'> | 'tintColor'
 ) => (value: string, key?: string) =>
   atomGenerator(property, transformer(value, key));
 
@@ -29,7 +29,7 @@ interface keysWithSides {
   m?: any;
 }
 
-const sides = ['', 'top', 'bottom', 'left', 'right', 'start', 'end'];
+const sides = ['', 'top', 'bottom', 'left', 'right', 'start', 'end'] as const;
 const getSidesFor = (
   property: keyof keysWithSides,
   f: (position: string) => {},
@@ -65,10 +65,12 @@ const dictionary = {
   // borders
   ...getSidesFor('border', position => (value: string) => {
     return (isNaN(Number(value)) && !constants.sizing[value]
-      ? getColorFor(`border${position}Color`)
-      : getSizeFor(`border${position}Width`))(value);
+      ? getColorFor(`border${position}Color` as 'borderColor')
+      : getSizeFor(`border${position}Width` as 'borderWidth'))(value);
   }),
-  ...getSidesFor('radius', position => getSizeFor(`border${position}Radius`)),
+  ...getSidesFor('radius', position =>
+    getSizeFor(`border${position}Radius` as 'borderRadius')
+  ),
   // sizing
   h: getSizeFor('height'),
   hscreen: compose(() => Dimensions.get('window').height)('height'),
@@ -79,10 +81,18 @@ const dictionary = {
   maxw: getSizeFor('maxWidth'),
   minw: getSizeFor('minWidth'),
   // spacing
-  ...getSidesFor('p', position => getSizeFor(`padding${position}`), true),
+  ...getSidesFor(
+    'p',
+    position => getSizeFor(`padding${position}` as 'padding'),
+    true
+  ),
   py: getSizeFor('paddingVertical'),
   px: getSizeFor('paddingHorizontal'),
-  ...getSidesFor('m', position => getSizeFor(`margin${position}`), true),
+  ...getSidesFor(
+    'm',
+    position => getSizeFor(`margin${position}` as 'margin'),
+    true
+  ),
   my: getSizeFor('marginVertical'),
   mx: getSizeFor('marginHorizontal'),
   //layout
@@ -90,7 +100,9 @@ const dictionary = {
   ltr: keyAsValue('direction'),
   rtl: keyAsValue('direction'),
   /* layout: top, bottom, left, right, start, end */
-  ...getSidesFor('', position => getSizeFor(position.toLowerCase())),
+  ...getSidesFor('', position =>
+    getSizeFor(position.toLowerCase() as typeof sides[1])
+  ),
   overflow: compose()('overflow'),
   // flexbox
   flex: compose((value: string) => Number(value || 1))('flex'),

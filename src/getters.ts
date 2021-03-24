@@ -17,7 +17,7 @@ export const getTextAlign = (name: string) => {
 };
 
 export const getSizeFor = (size: number) =>
-  Number(size) * constants.sizing.base;
+  Number(size) * (constants.sizing.base as number);
 
 export const getSizeForKey = (size: string) => {
   const nSize = Number(size);

@@ -82,13 +82,15 @@ export const extend = (custom: Partial<typeof constants>) => {
   });
 };
 
-export const exists = (key: string): boolean => key in C;
+export const exists = (key: string) => key in C;
 
-const isAValidKey = (key: string): boolean =>
+const isAValidKey = (key: string) =>
   typeof key === 'string' && !['$$typeof', 'prototype', 'toJSON'].includes(key);
 
 const handler = {
-  get: function(target: StylesObject, name: string): StylesObject {
+  get: function(target: StylesObject, name: string): Styles {
+    const valueInCache = StylesCacheManager.get(name);
+    if (valueInCache) return valueInCache;
     if (!isAValidKey(name)) return target;
     const [key, value] = camelCaseSplit(name);
     if (
@@ -98,24 +100,22 @@ const handler = {
       warnOnInvalidKey(`The key ${key} doesnt exists`);
       return target;
     }
-    const valueInCache = StylesCacheManager.get(name);
-    if (valueInCache) return valueInCache;
     const valueForKey =
       constants.classes[name] ??
       dictionary[key as DictionaryKeys]?.(value, key);
     StylesCacheManager.set(name, valueForKey);
     return valueForKey;
   },
-  has: function(target: StylesObject, name: DictionaryKeys): boolean {
+  has: function(target: StylesObject, name: DictionaryKeys) {
     return (
       dictionary[name] !== undefined || !isEmpty(handler.get(target, name))
     );
   },
-  set: function(): boolean {
+  set: function() {
     console.warn('set is not allowed. Use the extend method instead.');
     return false;
   },
-  defineProperty: function(): boolean {
+  defineProperty: function() {
     console.warn(
       'defineProperty is not allowed. Use the extend method instead.'
     );
@@ -126,6 +126,6 @@ const handler = {
   },
 };
 
-type Consistencss = Record<DictionaryKeys, {}> & Record<string, {}>;
+type Consistencss = Record<DictionaryKeys, Styles> & Record<string, Styles>;
 
 export const C = new Proxy({}, handler) as Consistencss;

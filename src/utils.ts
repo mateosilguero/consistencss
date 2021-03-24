@@ -1,4 +1,4 @@
-export const atomGenerator = (property: string, value: any) => ({
+export const atomGenerator = (property: string, value: string) => ({
   [property]: value,
 });
 
