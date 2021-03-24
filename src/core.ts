@@ -25,6 +25,10 @@ export const classNames = (
 
     if (typeof param === 'object') {
       Object.entries(param || {}).forEach(([key, value]) => {
+        if (typeof value === 'undefined') {
+          return;
+        }
+
         if (typeof value === 'boolean') {
           if (value) {
             classes += ` ${key.replace(/ +(?= )/g, '')}`;
