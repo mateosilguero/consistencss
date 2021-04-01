@@ -16,10 +16,6 @@ import C, {
 } from 'consistencss';
 import { NavigationStack } from '../types';
 
-C.elevation;
-
-C.px123;
-
 const row = apply(C.itemsCenter, C.justifyBetween, C.row);
 
 const Another: FC<{ navigation: NavigationStack }> = ({ navigation }) => {
