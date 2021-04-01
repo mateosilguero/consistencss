@@ -4,51 +4,55 @@ import dictionary, { DictionaryKeys } from './dictionary';
 import { DynamicObject, Styles, StylesObject } from './types';
 import { camelCaseSplit, isEmpty, warnOnInvalidKey } from './utils';
 
-export const apply = (
-  ...styles: Array<StyleProp<Styles> | string>
-): StyleProp<Styles | {}> =>
+type StylesArray = Array<StyleProp<Styles> | string>;
+
+export const apply = (...styles: StylesArray): StyleProp<Styles> =>
   styles
     .filter(s => !isEmpty(s))
     .flatMap(s => (typeof s === 'string' ? C[s] : s));
 
-export const classNames = (
-  ...params: Array<string | DynamicObject<boolean> | StyleProp<Styles | {}>>
-) => {
-  const styles: StyleProp<Styles | {}> = {};
-  let classes: string = '';
-
-  params.forEach(param => {
-    if (Array.isArray(param)) {
-      Object.assign(styles, ...param);
-      return;
-    }
-
-    if (typeof param === 'object') {
-      Object.entries(param || {}).forEach(([key, value]) => {
-        if (typeof value === 'boolean') {
+export function classNames(
+  ...params: Array<
+    string | boolean | DynamicObject<boolean | undefined> | StyleProp<Styles>
+  >
+) {
+  return apply.apply(
+    undefined,
+    params.reduce((acc, arg) => {
+      if (!arg) return acc;
+      if (typeof arg === 'string') {
+        return acc.concat(arg.split(' '));
+      }
+      if (Array.isArray(arg)) {
+        return acc.concat(arg);
+      }
+      if (typeof arg === 'object') {
+        Object.entries(arg).forEach(([key, value]) => {
           if (value) {
-            classes += ` ${key.replace(/ +(?= )/g, '')}`;
+            if (typeof value === 'boolean') {
+              acc = acc.concat(key.split(' '));
+            } else {
+              acc = acc.concat({
+                [key]: value,
+              });
+            }
           }
-        } else {
-          Object.assign(styles, param);
-        }
-      });
-    } else if (typeof param === 'string') {
-      classes += ` ${param}`;
-    }
-  });
-
-  return apply(...classes.split(' '), styles);
-};
+        });
+      }
+      return acc;
+    }, [] as StylesArray)
+  );
+}
 
 export const responsive = (
   styles: Partial<Record<Breakpoint, StyleProp<Styles>>>
 ) => {
   const screenWidth = Dimensions.get('window').width;
 
-  const currentStyle = Object.keys(styles).reduce((acc, key) => {
-    if (screenWidth >= (constants.layout[key as Breakpoint] || 0)) {
-      return styles[key as Breakpoint] as Styles;
+  const currentStyle = Object.keys(styles).reduce((acc, curr) => {
+    const key = curr as Breakpoint;
+    if (screenWidth >= (constants.layout[key] || 0)) {
+      return styles[key] as Styles;
     }
     return acc;
   }, {});
