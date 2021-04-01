@@ -146,7 +146,6 @@ test('classNames should return an array of styles by class names', () => {
   expect(
     classNames(
       apply(C.bgRed, C.mt2),
-      C.font4,
       {
         p2: true,
       },
@@ -157,14 +156,12 @@ test('classNames should return an array of styles by class names', () => {
       }
     )
   ).toEqual([
+    { backgroundColor: 'red' },
+    { marginTop: 8 },
     { padding: 8 },
     { marginBottom: 8 },
     { color: 'red' },
     { marginLeft: 8 },
-    { backgroundColor: 'red', fontSize: 16, marginTop: 8 },
-  ]);
-  expect(classNames(C.bgRed, C.font4, C.p2)).toEqual([
-    { backgroundColor: 'red', fontSize: 16, padding: 8 },
   ]);
 });
 
@@ -204,6 +201,34 @@ test('compose classes', () => {
   expect(classNames('disabled')).toEqual([
     { backgroundColor: 'gray' },
     { borderColor: 'red' },
+  ]);
+
+  expect(
+    apply(
+      [{ width: 100, margin: 4 }],
+      classNames(
+        'row itemsCenter justifyCenter',
+        undefined,
+        null,
+        [{ width: 110 }],
+        '',
+        {
+          h12: undefined,
+          'bgPrimary borderPrimary': true,
+        },
+        true,
+        { color: 'blue' }
+      )
+    )
+  ).toEqual([
+    { width: 100, margin: 4 },
+    { flexDirection: 'row' },
+    { alignItems: 'center' },
+    { justifyContent: 'center' },
+    { width: 110 },
+    { backgroundColor: 'primary' },
+    { borderColor: 'primary' },
+    { color: 'blue' },
   ]);
 
   expect(C.disabled).toEqual([
