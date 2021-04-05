@@ -45,6 +45,7 @@
     "eslint-plugin-prettier": "^3.1.2",
     "husky": "^4.0.1",
     "jest": "^25.1.0",
+    "node-fetch": "^2.6.1",
     "prettier": "^1.19.1",
     "react": "16.13.1",
     "react-native": "0.63.4",
@@ -120,8 +121,5 @@
   "eslintIgnore": [
     "node_modules/",
     "lib/"
-  ],
-  "dependencies": {
-    "node-fetch": "^2.6.1"
-  }
+  ]
 }
