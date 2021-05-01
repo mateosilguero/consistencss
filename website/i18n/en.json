@@ -208,6 +208,9 @@
       },
       "version-1.5.0/version-1.5.0-responsive": {
         "title": "responsive"
+      },
+      "version-1.7.0/version-1.7.0-borders": {
+        "title": "Borders"
       }
     },
     "links": {
