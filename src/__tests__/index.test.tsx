@@ -106,6 +106,42 @@ test('apply should always return a flatted array', () => {
   ]);
 });
 
+test('radius', () => {
+  expect(C.radius4).toEqual({
+    borderRadius: 16,
+  });
+  expect(C.radiustl4).toEqual({
+    borderTopLeftRadius: 16,
+  });
+  expect(C.radiustop6).toEqual({
+    borderTopLeftRadius: 24,
+    borderTopRightRadius: 24,
+  });
+  expect(C.radiusbr4).toEqual({
+    borderBottomRightRadius: 16,
+  });
+  expect(C.radiusbottom6).toEqual({
+    borderBottomLeftRadius: 24,
+    borderBottomRightRadius: 24,
+  });
+  expect(C.radiusleft5).toEqual({
+    borderBottomLeftRadius: 20,
+    borderTopLeftRadius: 20,
+  });
+  expect(C.radiusright7).toEqual({
+    borderBottomRightRadius: 28,
+    borderTopRightRadius: 28,
+  });
+  expect(C.radiusstart5).toEqual({
+    borderBottomStartRadius: 20,
+    borderTopStartRadius: 20,
+  });
+  expect(C.radiusend7).toEqual({
+    borderBottomEndRadius: 28,
+    borderTopEndRadius: 28,
+  });
+});
+
 test('classNames should return an array of styles by class names', () => {
   expect(classNames('m4 p2 textRed')).toEqual([
     { margin: 16 },

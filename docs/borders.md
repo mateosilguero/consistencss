@@ -46,8 +46,8 @@ import C from 'consistencss'
 ...
 return (
     <View style={C.radius4} />
-    <View style={C.radiusTop4} />
-    <View style={C.radiusLeft2} />
+    <View style={C.radiustop4} />
+    <View style={C.radiusleft2} />
 )
 ```
 
@@ -55,7 +55,7 @@ especify side:
 
 radius[side: string][size: number]
 
-`radius[top | bottom | left | right | start | end]`
+`radius[top | tl | tr | bottom | bl | br | left | right | start | end]`
 
 ## Examples:
 
