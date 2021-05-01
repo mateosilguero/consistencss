@@ -68,9 +68,41 @@ const dictionary = {
       ? getColorFor(`border${position}Color` as 'borderColor')
       : getSizeFor(`border${position}Width` as 'borderWidth'))(value);
   }),
-  ...getSidesFor('radius', position =>
-    getSizeFor(`border${position}Radius` as 'borderRadius')
-  ),
+  radius: getSizeFor('borderRadius'),
+  radiustl: getSizeFor('borderTopLeftRadius'),
+  radiustr: getSizeFor('borderTopRightRadius'),
+  radiusbl: getSizeFor('borderBottomLeftRadius'),
+  radiusbr: getSizeFor('borderBottomRightRadius'),
+  radiustop: (value: string) =>
+    Object.assign(
+      getSizeFor('borderTopLeftRadius')(value),
+      getSizeFor('borderTopRightRadius')(value)
+    ),
+  radiusbottom: (value: string) =>
+    Object.assign(
+      getSizeFor(`borderBottomLeftRadius` as 'borderRadius')(value),
+      getSizeFor(`borderBottomRightRadius` as 'borderRadius')(value)
+    ),
+  radiusleft: (value: string) =>
+    Object.assign(
+      getSizeFor(`borderTopLeftRadius` as 'borderRadius')(value),
+      getSizeFor(`borderBottomLeftRadius` as 'borderRadius')(value)
+    ),
+  radiusright: (value: string) =>
+    Object.assign(
+      getSizeFor(`borderTopRightRadius` as 'borderRadius')(value),
+      getSizeFor(`borderBottomRightRadius` as 'borderRadius')(value)
+    ),
+  radiusstart: (value: string) =>
+    Object.assign(
+      getSizeFor(`borderTopStartRadius` as 'borderRadius')(value),
+      getSizeFor(`borderBottomStartRadius` as 'borderRadius')(value)
+    ),
+  radiusend: (value: string) =>
+    Object.assign(
+      getSizeFor(`borderTopEndRadius` as 'borderRadius')(value),
+      getSizeFor(`borderBottomEndRadius` as 'borderRadius')(value)
+    ),
   // sizing
   h: getSizeFor('height'),
   hscreen: compose(() => Dimensions.get('window').height)('height'),

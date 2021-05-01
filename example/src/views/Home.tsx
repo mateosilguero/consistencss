@@ -50,7 +50,7 @@ const Home: FC<{
         <Text style={C.weightBlack}>primary</Text>
       </TouchableOpacity>
       <TouchableOpacity
-        style={apply(C.m4, C.mb0, C.radius4, C.shadowXl)}
+        style={apply(C.m4, C.mb0, C.radiustl4, C.shadowXl)}
         onPress={() => navigation.navigate('Another')}
       >
         <Text style={apply(C.textWhite)}>Navigate</Text>
