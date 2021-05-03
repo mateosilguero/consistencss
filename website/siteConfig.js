@@ -52,6 +52,13 @@ const users = [
       'https://play.google.com/store/apps/details?id=com.leiteszeke.juntos.prestadores',
     pinned: true,
   },
+  {
+    caption: 'Holded - Business',
+    image:
+      'https://play-lh.googleusercontent.com/8iNngslzzHM-5CbUz_puC7rpEgYWRNrnAYuVgYRFa21YGFK55zqG96Ewcd7LgYfw6w=s180-rw',
+    infoLink: 'https://play.google.com/store/apps/details?id=com.holded.app',
+    pinned: true,
+  },
 ];
 
 const siteConfig = {
