@@ -231,6 +231,11 @@ test('compose classes', () => {
       disabled: classNames(null, 'bgGray borderRed'),
       debug: apply(C.border1, C.borderRed),
       letter0: { letterSpacing: 0 },
+      letter2: apply(C.borderRed, { letterSpacing: 2 }),
+      letterZero: { letterSpacing: 3 },
+      // Should get an error
+      font: { fontSize: 20 },
+      font12: { fontSize: 20 },
     },
   });
 
@@ -266,6 +271,11 @@ test('compose classes', () => {
     { borderColor: 'primary' },
     { color: 'blue' },
   ]);
+  expect(C.letter0).toEqual({ letterSpacing: 0 });
+
+  expect(C.letter2).toEqual([{ borderColor: 'red' }, { letterSpacing: 2 }]);
+
+  expect(C.letterZero).toEqual({ letterSpacing: 3 });
 
   expect(C.disabled).toEqual([
     { backgroundColor: 'gray' },

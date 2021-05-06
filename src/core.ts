@@ -1,7 +1,13 @@
-import { Dimensions, StyleProp } from 'react-native';
+import { Dimensions, StyleProp, ViewStyle } from 'react-native';
 import constants, { Breakpoint } from './constants';
-import dictionary, { DictionaryKeys } from './dictionary';
-import { DynamicObject, Styles, StylesObject } from './types';
+import dictionary from './dictionary';
+import {
+  DictionaryKeys,
+  DynamicObject,
+  NonDictionaryKeys,
+  Styles,
+  StylesObject,
+} from './types';
 import { camelCaseSplit, isEmpty, warnOnInvalidKey } from './utils';
 
 type StylesArray = Array<StyleProp<Styles> | string>;
@@ -60,8 +66,6 @@ export const responsive = (
   return apply(currentStyle);
 };
 
-type ConstantsKey = keyof typeof constants;
-
 const StylesCacheManager = {
   cache: {} as DynamicObject<Styles>,
   get: (key: string) => StylesCacheManager.cache[key],
@@ -73,7 +77,10 @@ const StylesCacheManager = {
   },
 };
 
-export const extend = (custom: Partial<typeof constants>) => {
+type CustomConfig = Omit<typeof constants, 'classesDictionary'>;
+type ConstantsKey = keyof CustomConfig;
+
+export const extend = (custom: Partial<CustomConfig>) => {
   // clear cache to override previous values with new config
   StylesCacheManager.clear();
   Object.keys(custom).forEach((type: string) => {
@@ -84,6 +91,9 @@ export const extend = (custom: Partial<typeof constants>) => {
       }
     });
   });
+
+  constants.classesDictionary =
+    Object.entries(constants.classes).map(([k]) => camelCaseSplit(k)[0]) || [];
 };
 
 export const exists = (key: string) => key in C;
@@ -92,21 +102,24 @@ const isAValidKey = (key: string) =>
   typeof key === 'string' && !['$$typeof', 'prototype', 'toJSON'].includes(key);
 
 const handler = {
-  get: function(target: StylesObject, name: string): Styles {
+  get: function(target: StylesObject, name: string): StylesObject | ViewStyle {
     const valueInCache = StylesCacheManager.get(name);
     if (valueInCache) return valueInCache;
+
     if (!isAValidKey(name)) return target;
     const [key, value] = camelCaseSplit(name);
+
     if (
       !dictionary.hasOwnProperty(key) &&
-      !constants.classes.hasOwnProperty(name)
+      !constants.classesDictionary.includes(key)
     ) {
       warnOnInvalidKey(`The key ${key} doesnt exists`);
       return target;
     }
     const valueForKey =
-      constants.classes[name] ??
-      dictionary[key as DictionaryKeys]?.(value, key);
+      dictionary[key as DictionaryKeys]?.(value, key) ||
+      constants.classes[name.toLowerCase() as keyof NonDictionaryKeys];
+
     StylesCacheManager.set(name, valueForKey);
     return valueForKey;
   },
