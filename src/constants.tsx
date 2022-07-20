@@ -1,5 +1,5 @@
 import { StyleProp, StyleSheet, Platform } from 'react-native';
-import { StringObject, DynamicObject, Styles } from './types';
+import { StringObject, DynamicObject, Styles, ClassesKey } from './types';
 
 const sizing: DynamicObject<number | string> = {
   base: 4,
@@ -33,7 +33,9 @@ const colors: StringObject = {};
 
 const fonts: StringObject = {};
 
-const classes: DynamicObject<StyleProp<Styles | {}>> = {};
+const classes: ClassesKey = {};
+
+const classesDictionary: string[] = [];
 
 const fontWeights: StringObject = {
   '': 'normal',
@@ -95,6 +97,8 @@ const shadows: DynamicObject<Styles> = {
 
 export default {
   alignment,
+  classes,
+  classesDictionary,
   colors,
   components,
   fonts,
@@ -102,5 +106,4 @@ export default {
   fontWeights,
   shadows,
   sizing,
-  classes,
 };
